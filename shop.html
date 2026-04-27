@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loja — VIVA.MODA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --primary:#1a1a2e;--accent:#e63946;--accent-h:#c1121f;
+  --text:#2d2d2d;--muted:#777;--border:#e8e8e8;
+  --bg:#f8f9fa;--white:#fff;--gold:#f4c542;--pix:#32bcad;--green:#2d6a4f;
+  --font:'Poppins',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);color:var(--text);background:var(--white);overflow-x:hidden}
+a{text-decoration:none;color:inherit}img{max-width:100%;display:block}ul{list-style:none}button{font-family:var(--font)}
+input,select{font-family:var(--font)}
+
+.ann{background:var(--primary);color:#fff;text-align:center;padding:9px 20px;font-size:13px;font-weight:500}
+.ann b{color:var(--gold)}
+header{position:sticky;top:0;z-index:900;background:#fff;box-shadow:0 2px 12px rgba(0,0,0,.07)}
+.hdr{max-width:1320px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:70px}
+.logo{font-size:24px;font-weight:900;color:var(--primary);letter-spacing:-1px}
+.logo span{color:var(--accent)}
+nav ul{display:flex;gap:28px}
+nav a{font-size:13.5px;font-weight:500;color:var(--text);transition:.2s;position:relative}
+nav a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--accent);transition:.3s}
+nav a:hover,.nav-active{color:var(--accent)}
+nav a:hover::after,.nav-active::after{width:100%}
+.hdr-right{display:flex;align-items:center;gap:18px}
+.hdr-icon{background:none;border:none;cursor:pointer;font-size:17px;color:var(--text);transition:.2s;position:relative}
+.hdr-icon:hover{color:var(--accent)}
+.badge{position:absolute;top:-7px;right:-7px;background:var(--accent);color:#fff;font-size:9px;font-weight:700;width:17px;height:17px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;border:none;background:none;padding:4px}
+.burger span{width:23px;height:2px;background:var(--primary);border-radius:2px;display:block}
+
+/* BREADCRUMB */
+.breadcrumb{background:var(--bg);padding:14px 24px;border-bottom:1px solid var(--border)}
+.bc-inner{max-width:1320px;margin:0 auto;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)}
+.bc-inner a{color:var(--muted);transition:.2s}
+.bc-inner a:hover{color:var(--accent)}
+.bc-inner span{color:var(--text);font-weight:500}
+
+/* SHOP HERO */
+.shop-hero{background:linear-gradient(135deg,var(--primary) 0%,#16213e 100%);padding:50px 24px;text-align:center;color:#fff}
+.shop-hero h1{font-size:clamp(26px,5vw,46px);font-weight:800;margin-bottom:10px}
+.shop-hero p{font-size:14.5px;opacity:.8;max-width:420px;margin:0 auto}
+
+/* LAYOUT */
+.shop-layout{max-width:1320px;margin:40px auto;padding:0 24px;display:grid;grid-template-columns:260px 1fr;gap:32px;align-items:start}
+
+/* SIDEBAR */
+.sidebar{position:sticky;top:88px}
+.sb-card{background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:16px}
+.sb-head{padding:16px 18px;background:var(--primary);color:#fff;font-size:13.5px;font-weight:600;display:flex;align-items:center;justify-content:space-between;cursor:pointer}
+.sb-head i{font-size:12px;transition:.3s}
+.sb-body{padding:18px}
+.filter-cats li{margin-bottom:4px}
+.filter-cats a{display:flex;align-items:center;justify-content:space-between;padding:8px 10px;border-radius:5px;font-size:13.5px;transition:.2s}
+.filter-cats a:hover,.filter-cats a.active{background:rgba(230,57,70,.08);color:var(--accent)}
+.filter-cats .count{background:var(--bg);color:var(--muted);font-size:11px;font-weight:600;padding:2px 7px;border-radius:10px}
+.filter-cats a.active .count{background:var(--accent);color:#fff}
+
+/* price range */
+.price-range{padding:4px 0}
+.price-slider{width:100%;accent-color:var(--accent);margin:12px 0}
+.price-labels{display:flex;justify-content:space-between;font-size:12.5px;color:var(--muted)}
+
+/* checkboxes */
+.check-list li{display:flex;align-items:center;gap:9px;margin-bottom:9px;cursor:pointer;font-size:13px}
+.check-list input[type=checkbox]{width:15px;height:15px;accent-color:var(--accent);cursor:pointer}
+
+/* size */
+.size-grid{display:flex;flex-wrap:wrap;gap:7px}
+.sz{width:40px;height:40px;border:1.5px solid var(--border);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:12.5px;font-weight:600;cursor:pointer;transition:.2s}
+.sz:hover,.sz.active{border-color:var(--accent);background:var(--accent);color:#fff}
+
+/* color swatches */
+.color-swatches{display:flex;flex-wrap:wrap;gap:9px}
+.swatch{width:28px;height:28px;border-radius:50%;cursor:pointer;border:2.5px solid transparent;transition:.2s}
+.swatch:hover,.swatch.active{border-color:var(--primary);transform:scale(1.15)}
+
+/* MAIN */
+.shop-main{}
+.shop-toolbar{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px;flex-wrap:wrap;gap:12px}
+.results-count{font-size:13.5px;color:var(--muted)}
+.results-count b{color:var(--text);font-weight:600}
+.toolbar-right{display:flex;align-items:center;gap:12px}
+.sort-select{padding:9px 14px;border:1.5px solid var(--border);border-radius:6px;font-size:13px;color:var(--text);outline:none;cursor:pointer;transition:.2s}
+.sort-select:focus{border-color:var(--accent)}
+.view-btns{display:flex;gap:4px}
+.vb{width:34px;height:34px;border:1.5px solid var(--border);border-radius:5px;display:flex;align-items:center;justify-content:center;cursor:pointer;background:#fff;font-size:14px;color:var(--muted);transition:.2s}
+.vb:hover,.vb.active{border-color:var(--accent);color:var(--accent)}
+
+/* PRODUCT GRID */
+.prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.pc{background:#fff;border-radius:10px;overflow:hidden;transition:.3s;position:relative;border:1px solid var(--border)}
+.pc:hover{box-shadow:0 14px 40px rgba(0,0,0,.1);transform:translateY(-5px);border-color:transparent}
+.pc-img{position:relative;overflow:hidden;background:var(--bg);aspect-ratio:3/4}
+.pc-img img{width:100%;height:100%;object-fit:cover;transition:.5s ease}
+.pc:hover .pc-img img{transform:scale(1.06)}
+.badge-wrap{position:absolute;top:10px;left:10px;z-index:2;display:flex;flex-direction:column;gap:5px}
+.tag{padding:4px 9px;border-radius:3px;font-size:10.5px;font-weight:700;letter-spacing:.4px;text-transform:uppercase}
+.tag-sale{background:var(--accent);color:#fff}
+.tag-new{background:var(--primary);color:#fff}
+.pc-acts{position:absolute;top:10px;right:10px;display:flex;flex-direction:column;gap:7px;opacity:0;transform:translateX(8px);transition:.3s;z-index:2}
+.pc:hover .pc-acts{opacity:1;transform:translateX(0)}
+.pa{width:35px;height:35px;background:#fff;border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:13px;color:var(--text);transition:.2s;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.pa:hover{background:var(--accent);color:#fff}
+.pc-cart{position:absolute;bottom:0;left:0;right:0;background:var(--primary);color:#fff;border:none;padding:12px;font-size:12.5px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;opacity:0;transform:translateY(100%);transition:.3s}
+.pc:hover .pc-cart{opacity:1;transform:translateY(0)}
+.pc-cart:hover{background:var(--accent)}
+.pc-info{padding:14px}
+.pc-cat{font-size:10.5px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+.pc-name{font-size:13.5px;font-weight:600;color:var(--primary);margin-bottom:7px;line-height:1.4}
+.pc-name a:hover{color:var(--accent)}
+.stars{color:var(--gold);font-size:11px}
+.pc-rev{font-size:11px;color:var(--muted)}
+.pc-price{display:flex;align-items:center;gap:7px;margin-top:8px}
+.p-now{font-size:16px;font-weight:700;color:var(--accent)}
+.p-old{font-size:12.5px;color:var(--muted);text-decoration:line-through}
+.p-pix{font-size:11px;color:var(--green);font-weight:600;margin-top:3px}
+
+/* PAGINATION */
+.pagination{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:44px}
+.pg{width:38px;height:38px;border:1.5px solid var(--border);border-radius:6px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:13.5px;font-weight:600;transition:.2s;color:var(--text)}
+.pg:hover,.pg.active{background:var(--accent);border-color:var(--accent);color:#fff}
+.pg-arrow{width:38px;height:38px;border:1.5px solid var(--border);border-radius:6px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.2s;color:var(--muted)}
+.pg-arrow:hover{border-color:var(--accent);color:var(--accent)}
+
+/* WA */
+.wa{position:fixed;bottom:26px;right:26px;background:#25d366;color:#fff;width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:25px;box-shadow:0 4px 18px rgba(37,211,102,.5);z-index:999;transition:.3s;animation:wa-pulse 2.2s infinite}
+.wa:hover{transform:scale(1.12)}
+@keyframes wa-pulse{0%,100%{box-shadow:0 4px 18px rgba(37,211,102,.5)}50%{box-shadow:0 4px 28px rgba(37,211,102,.85)}}
+
+/* FOOTER */
+footer{background:var(--primary);color:rgba(255,255,255,.75);padding:50px 24px 0;margin-top:60px}
+.ft-grid{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:38px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.09)}
+.ft-brand .logo{color:#fff;margin-bottom:14px}
+.ft-brand p{font-size:13px;line-height:1.85;max-width:260px}
+.ft-social{display:flex;gap:10px;margin-top:18px}
+.ft-social a{width:36px;height:36px;background:rgba(255,255,255,.07);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;transition:.2s}
+.ft-social a:hover{background:var(--accent);color:#fff}
+.ft-col h4{color:#fff;font-size:13px;font-weight:600;margin-bottom:16px}
+.ft-col ul{display:flex;flex-direction:column;gap:8px}
+.ft-col a{font-size:12.5px;transition:.2s}
+.ft-col a:hover{color:var(--accent)}
+.ft-bot{max-width:1320px;margin:0 auto;padding:20px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.ft-bot p{font-size:12px}
+.pay-icons{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.pi{background:rgba(255,255,255,.1);border-radius:3px;padding:4px 8px;font-size:10px;font-weight:700;color:#fff;letter-spacing:.4px}
+.pi.pix{background:var(--pix)}
+.pi.bol{background:var(--gold);color:#333}
+
+@media(max-width:1024px){.shop-layout{grid-template-columns:220px 1fr;gap:22px}.prod-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){
+  nav{display:none}.burger{display:flex}
+  .shop-layout{grid-template-columns:1fr}.sidebar{display:none}
+  .prod-grid{grid-template-columns:repeat(2,1fr);gap:14px}
+  .ft-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:480px){.prod-grid{gap:10px}.ft-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="ann">🚚 Frete grátis acima de <b>R$ 299</b> &nbsp;·&nbsp; 12x sem juros &nbsp;·&nbsp; <b>5% OFF no Pix</b></div>
+
+<header>
+  <div class="hdr">
+    <a href="index.html" class="logo">VIVA<span>.</span>MODA</a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="shop.html" class="nav-active">Loja</a></li>
+        <li><a href="shop.html">Feminino</a></li>
+        <li><a href="shop.html">Masculino</a></li>
+        <li><a href="shop.html">Promoções</a></li>
+        <li><a href="#">Contato</a></li>
+      </ul>
+    </nav>
+    <div class="hdr-right">
+      <button class="hdr-icon"><i class="fas fa-search"></i></button>
+      <button class="hdr-icon"><i class="fas fa-heart"></i></button>
+      <button class="hdr-icon" style="position:relative"><i class="fas fa-shopping-bag"></i><span class="badge">3</span></button>
+      <button class="hdr-icon"><i class="fas fa-user"></i></button>
+      <button class="burger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <div class="bc-inner">
+    <a href="index.html">Início</a>
+    <i class="fas fa-chevron-right" style="font-size:10px"></i>
+    <span>Loja</span>
+  </div>
+</div>
+
+<div class="shop-hero">
+  <h1>Nossa Loja</h1>
+  <p>Explore nossa coleção completa com mais de 650 produtos</p>
+</div>
+
+<div class="shop-layout">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <!-- Categories -->
+    <div class="sb-card">
+      <div class="sb-head">Categorias <i class="fas fa-chevron-up"></i></div>
+      <div class="sb-body">
+        <ul class="filter-cats">
+          <li><a href="#" class="active">Todos os Produtos <span class="count">651</span></a></li>
+          <li><a href="#">Feminino <span class="count">248</span></a></li>
+          <li><a href="#">Masculino <span class="count">186</span></a></li>
+          <li><a href="#">Calçados <span class="count">124</span></a></li>
+          <li><a href="#">Acessórios <span class="count">93</span></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Price -->
+    <div class="sb-card">
+      <div class="sb-head">Faixa de Preço <i class="fas fa-chevron-up"></i></div>
+      <div class="sb-body">
+        <div class="price-range">
+          <input type="range" class="price-slider" min="0" max="1000" value="600" id="priceRange" oninput="document.getElementById('priceVal').textContent='R$ '+this.value">
+          <div class="price-labels"><span>R$ 0</span><span id="priceVal">R$ 600</span></div>
+        </div>
+        <button style="width:100%;margin-top:12px;padding:10px;background:var(--accent);color:#fff;border:none;border-radius:5px;font-weight:600;font-size:13px;cursor:pointer">Filtrar</button>
+      </div>
+    </div>
+
+    <!-- Size -->
+    <div class="sb-card">
+      <div class="sb-head">Tamanho <i class="fas fa-chevron-up"></i></div>
+      <div class="sb-body">
+        <div class="size-grid">
+          <div class="sz">PP</div>
+          <div class="sz active">P</div>
+          <div class="sz">M</div>
+          <div class="sz">G</div>
+          <div class="sz">GG</div>
+          <div class="sz">XGG</div>
+          <div class="sz">34</div>
+          <div class="sz">36</div>
+          <div class="sz">38</div>
+          <div class="sz">40</div>
+          <div class="sz">42</div>
+          <div class="sz">44</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Color -->
+    <div class="sb-card">
+      <div class="sb-head">Cor <i class="fas fa-chevron-up"></i></div>
+      <div class="sb-body">
+        <div class="color-swatches">
+          <div class="swatch active" style="background:#1a1a2e" title="Azul marinho"></div>
+          <div class="swatch" style="background:#e63946" title="Vermelho"></div>
+          <div class="swatch" style="background:#fff;border:2px solid #ddd" title="Branco"></div>
+          <div class="swatch" style="background:#333" title="Preto"></div>
+          <div class="swatch" style="background:#c8a882" title="Bege"></div>
+          <div class="swatch" style="background:#4a7c59" title="Verde"></div>
+          <div class="swatch" style="background:#f4c542" title="Amarelo"></div>
+          <div class="swatch" style="background:#9b59b6" title="Roxo"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Brand -->
+    <div class="sb-card">
+      <div class="sb-head">Marca <i class="fas fa-chevron-up"></i></div>
+      <div class="sb-body">
+        <ul class="check-list">
+          <li><input type="checkbox" checked> VivaStyle (124)</li>
+          <li><input type="checkbox"> BrazilFit (98)</li>
+          <li><input type="checkbox"> UrbanBR (76)</li>
+          <li><input type="checkbox"> ModaTrend (64)</li>
+          <li><input type="checkbox"> ClassiCo (48)</li>
+        </ul>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- MAIN -->
+  <main class="shop-main">
+    <div class="shop-toolbar">
+      <p class="results-count">Mostrando <b>12</b> de <b>651</b> produtos</p>
+      <div class="toolbar-right">
+        <select class="sort-select">
+          <option>Mais Relevantes</option>
+          <option>Mais Vendidos</option>
+          <option>Menor Preço</option>
+          <option>Maior Preço</option>
+          <option>Mais Recentes</option>
+          <option>Mais Avaliados</option>
+        </select>
+        <div class="view-btns">
+          <button class="vb active"><i class="fas fa-th-large"></i></button>
+          <button class="vb"><i class="fas fa-list"></i></button>
+        </div>
+      </div>
+    </div>
+
+    <div class="prod-grid">
+
+      <div class="pc">
+        <div class="pc-img">
+          <div class="badge-wrap"><span class="tag tag-sale">-30%</span></div>
+          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=500&q=80" alt="Vestido Floral" loading="lazy">
+          <div class="pc-acts">
+            <button class="pa"><i class="fas fa-heart"></i></button>
+            <button class="pa"><i class="fas fa-eye"></i></button>
+          </div>
+          <button class="pc-cart"><i class="fas fa-shopping-cart"></i> Adicionar</button>
+        </div>
+        <div class="pc-info">
+          <p class="pc-cat">Feminino</p>
+          <h3 class="pc-name"><a href="product.html">Vestido Floral Verão</a></h3>
+          <div style="display:flex;align-items:center;gap:5px;margin-bottom:6px"><span class="stars">★★★★★</span><span class="pc-rev">(87)</span></div>
+          <div class="pc-price"><span class="p-now">R$ 129,90</span><span class="p-old">R$ 185,90</span></div>
+          <p class="p-pix"><i class="fas fa-bolt"></i> R$ 123,40 no Pix</p>
+        </div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-img">
+          <div class="badge-wrap"><span class="tag tag-new">Novo</span></div>
+          <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=500&q=80" alt="Jaqueta" loading="lazy">
+          <div class="pc-acts">
+            <button class="pa"><i class="fas fa-heart"></i></button>
+            <button class="pa"><i class="fas fa-eye"></i></button>
+          </div>
+          <button class="pc-cart"><i class="fas fa-shopping-cart"></i> Adicionar</button>
+        </div>
+        <div class="pc-info">
+          <p class="pc-cat">Masculino</p>
+          <h3 class="pc-name"><a href="product.html">Jaqueta Slim Fit</a></h3>
+          <div style="display:flex;align-items:center;gap:5px;margin-bottom:6px"><span class="stars">★★★★☆</span><span class="pc-rev">(42)</span></div>
+          <div class="pc-price"><span class="p-now">R$ 249,90</span></div>
+          <p class="p-pix"><i class="fas fa-bolt"></i> R$ 237,40 no Pix</p>
+        </div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-img">
+          <div class="badge-wrap"><span class="tag tag-sale">-20%</span></div>
+          <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=500&q=80" alt="Tênis" loading="lazy">
+          <div class="pc-acts">
+            <button class="pa"><i class="fas fa-heart"></i></button>
+            <button class="pa"><i class="fas fa-eye"></i></button>
+          </div>
+          <button class="pc-cart"><i class="fas fa-shopping-cart"></i> Adicionar</button>
+        </div>
+        <div class="pc-info">
+          <p class="pc-cat">Calçados</p>
+          <h3 class="pc-name"><a href="product.html">Tênis Casual Moderno</a></h3>
+          <div style="display:flex;align-items:center;gap:5px;margin-bottom:6px"><span class="stars">★★★★★</span><span class="pc-rev">(136)</span></div>
+          <div class="pc-price"><span class="p-now">R$ 189,90</span><span class="p-old">R$ 237,90</span></div>
+          <p class="p-pix"><i class="fas fa-bolt"></i> R$ 180,40 no Pix</p>
+        </div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-img">
+          <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=500&q=80" alt="Blazer" loading="lazy">
+          <div class="pc-acts">
+            <button class="pa"><i class="fas fa-heart"></i></button>
+            <button class="pa"><i class="fas fa-eye"></i></button>
+          </div>
+          <button class="pc-cart"><i class="fas fa-shopping-cart"></i> Adicionar</button>
+        </div>
+        <div class="pc-info">
+          <p class="pc-cat">Feminino</p>
+          <h3 class="pc-name"><a href="product.html">Blazer Executivo</a></h3>
+          <div style="display:flex;align-items:center;gap:5px;margin-bottom:6px"><span class="stars">★★★★★</span><span class="pc-rev">(61)</span></div>
+          <div class="pc-price"><span class="p-now">R$ 319,90</span></div>
+          <p class="p-pix"><i class="fas fa-bolt"></i> R$ 303,90 no Pix</p>
+        </div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-img">
+          <div class="badge-wrap"><span class="tag tag-sale">-40%</span></div>
+          <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=500&q=80" alt="Camisa" loading="lazy">
+          <div class="pc-acts">
+            <button class="pa"><i class="fas fa-heart"></i></button>
+            <button class="pa"><i class="fas fa-eye"></i></button>
+          </div>
+          <button class="pc-cart"><i class="fas fa-shopping-cart"></i> Adicionar</button>
+        </div>
+        <div class="pc-info">
+          <p class="pc-cat">Masculino</p>
+          <h3 class="pc-name"><a href="product.html">Camisa Social Oxford</a></h3>
+          <div style="display:flex;align-items:center;gap:5px;margin-bottom:6px"><span class="stars">★★★★☆</span><span class="pc-rev">(29)</span></div>
+          <div class="pc-price"><span class="p-now">R$ 89,90</span><span class="p-old">R$ 149,90</span></div>
+          <p class="p-pix"><i class="fas fa-bolt"></i> R$ 85,40 no Pix</p>
+        </div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-img">
+          <div class="badge-wrap"><span class="tag tag-new">Novo</span></div>
+          <img src="https://images.unsplash.com/photo-1467043237213-65f2da53396f?w=500&q=80" alt="Calça" loading="lazy">
+          <div class="pc-acts">
+            <button class="pa"><i class="fas fa-heart"></i></button>
+            <button class="pa"><i class="fas fa-eye"></i></button>
+          </div>
+          <button class="pc-cart"><i class="fas fa-shopping-cart"></i> Adicionar</button>
+        </div>
+        <div class="pc-info">
+          <p class="pc-cat">Feminino</p>
+          <h3 class="pc-name"><a href="product.html">Calça Jeans Skinny</a></h3>
+          <div style="display:flex;align-items:center;gap:5px;margin-bottom:6px"><span class="stars">★★★★★</span><span class="pc-rev">(94)</span></div>
+          <div class="pc-price"><span class="p-now">R$ 159,90</span></div>
+          <p class="p-pix"><i class="fas fa-bolt"></i> R$ 151,90 no Pix</p>
+        </div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-img">
+          <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&q=80" alt="Bolsa" loading="lazy">
+          <div class="pc-acts">
+            <button class="pa"><i class="fas fa-heart"></i></button>
+            <button class="pa"><i class="fas fa-eye"></i></button>
+          </div>
+          <button class="pc-cart"><i class="fas fa-shopping-cart"></i> Adicionar</button>
+        </div>
+        <div class="pc-info">
+          <p class="pc-cat">Acessórios</p>
+          <h3 class="pc-name"><a href="product.html">Bolsa Couro Sintético</a></h3>
+          <div style="display:flex;align-items:center;gap:5px;margin-bottom:6px"><span class="stars">★★★★☆</span><span class="pc-rev">(58)</span></div>
+          <div class="pc-price"><span class="p-now">R$ 199,90</span></div>
+          <p class="p-pix"><i class="fas fa-bolt"></i> R$ 189,90 no Pix</p>
+        </div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-img">
+          <div class="badge-wrap"><span class="tag tag-sale">-25%</span></div>
+          <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=500&q=80" alt="Look" loading="lazy">
+          <div class="pc-acts">
+            <button class="pa"><i class="fas fa-heart"></i></button>
+            <button class="pa"><i class="fas fa-eye"></i></button>
+          </div>
+          <button class="pc-cart"><i class="fas fa-shopping-cart"></i> Adicionar</button>
+        </div>
+        <div class="pc-info">
+          <p class="pc-cat">Feminino</p>
+          <h3 class="pc-name"><a href="product.html">Look Completo Casual</a></h3>
+          <div style="display:flex;align-items:center;gap:5px;margin-bottom:6px"><span class="stars">★★★★★</span><span class="pc-rev">(113)</span></div>
+          <div class="pc-price"><span class="p-now">R$ 274,90</span><span class="p-old">R$ 369,90</span></div>
+          <p class="p-pix"><i class="fas fa-bolt"></i> R$ 261,15 no Pix</p>
+        </div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-img">
+          <div class="badge-wrap"><span class="tag tag-new">Novo</span></div>
+          <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=500&q=80" alt="Vestido" loading="lazy">
+          <div class="pc-acts">
+            <button class="pa"><i class="fas fa-heart"></i></button>
+            <button class="pa"><i class="fas fa-eye"></i></button>
+          </div>
+          <button class="pc-cart"><i class="fas fa-shopping-cart"></i> Adicionar</button>
+        </div>
+        <div class="pc-info">
+          <p class="pc-cat">Feminino</p>
+          <h3 class="pc-name"><a href="product.html">Vestido Longo Elegante</a></h3>
+          <div style="display:flex;align-items:center;gap:5px;margin-bottom:6px"><span class="stars">★★★★★</span><span class="pc-rev">(71)</span></div>
+          <div class="pc-price"><span class="p-now">R$ 349,90</span></div>
+          <p class="p-pix"><i class="fas fa-bolt"></i> R$ 332,40 no Pix</p>
+        </div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-img">
+          <div class="badge-wrap"><span class="tag tag-sale">-15%</span></div>
+          <img src="https://images.unsplash.com/photo-1542219550-37153d387c27?w=500&q=80" alt="Shorts" loading="lazy">
+          <div class="pc-acts">
+            <button class="pa"><i class="fas fa-heart"></i></button>
+            <button class="pa"><i class="fas fa-eye"></i></button>
+          </div>
+          <button class="pc-cart"><i class="fas fa-shopping-cart"></i> Adicionar</button>
+        </div>
+        <div class="pc-info">
+          <p class="pc-cat">Masculino</p>
+          <h3 class="pc-name"><a href="product.html">Shorts Esportivo Pro</a></h3>
+          <div style="display:flex;align-items:center;gap:5px;margin-bottom:6px"><span class="stars">★★★★☆</span><span class="pc-rev">(33)</span></div>
+          <div class="pc-price"><span class="p-now">R$ 79,90</span><span class="p-old">R$ 93,90</span></div>
+          <p class="p-pix"><i class="fas fa-bolt"></i> R$ 75,90 no Pix</p>
+        </div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-img">
+          <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=500&q=80" alt="Bolsa 2" loading="lazy">
+          <div class="pc-acts">
+            <button class="pa"><i class="fas fa-heart"></i></button>
+            <button class="pa"><i class="fas fa-eye"></i></button>
+          </div>
+          <button class="pc-cart"><i class="fas fa-shopping-cart"></i> Adicionar</button>
+        </div>
+        <div class="pc-info">
+          <p class="pc-cat">Acessórios</p>
+          <h3 class="pc-name"><a href="product.html">Mochila Urban Premium</a></h3>
+          <div style="display:flex;align-items:center;gap:5px;margin-bottom:6px"><span class="stars">★★★★★</span><span class="pc-rev">(88)</span></div>
+          <div class="pc-price"><span class="p-now">R$ 219,90</span></div>
+          <p class="p-pix"><i class="fas fa-bolt"></i> R$ 208,90 no Pix</p>
+        </div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-img">
+          <div class="badge-wrap"><span class="tag tag-sale">-35%</span></div>
+          <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=500&q=80" alt="Sapato" loading="lazy">
+          <div class="pc-acts">
+            <button class="pa"><i class="fas fa-heart"></i></button>
+            <button class="pa"><i class="fas fa-eye"></i></button>
+          </div>
+          <button class="pc-cart"><i class="fas fa-shopping-cart"></i> Adicionar</button>
+        </div>
+        <div class="pc-info">
+          <p class="pc-cat">Calçados</p>
+          <h3 class="pc-name"><a href="product.html">Sapato Social Executivo</a></h3>
+          <div style="display:flex;align-items:center;gap:5px;margin-bottom:6px"><span class="stars">★★★★★</span><span class="pc-rev">(52)</span></div>
+          <div class="pc-price"><span class="p-now">R$ 219,90</span><span class="p-old">R$ 338,90</span></div>
+          <p class="p-pix"><i class="fas fa-bolt"></i> R$ 208,90 no Pix</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- PAGINATION -->
+    <div class="pagination">
+      <div class="pg-arrow"><i class="fas fa-chevron-left"></i></div>
+      <div class="pg active">1</div>
+      <div class="pg">2</div>
+      <div class="pg">3</div>
+      <span style="color:var(--muted);font-size:14px">...</span>
+      <div class="pg">18</div>
+      <div class="pg-arrow"><i class="fas fa-chevron-right"></i></div>
+    </div>
+
+  </main>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-grid">
+    <div class="ft-brand">
+      <div class="logo">VIVA<span style="color:var(--accent)">.</span>MODA</div>
+      <p>Sua loja de moda online com as melhores tendências, entrega rápida e pagamento seguro em todo o Brasil.</p>
+      <div class="ft-social">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-tiktok"></i></a>
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+    <div class="ft-col"><h4>Atendimento</h4><ul><li><a href="#">Central de Ajuda</a></li><li><a href="#">Rastrear Pedido</a></li><li><a href="#">Trocas e Devoluções</a></li><li><a href="#">WhatsApp</a></li></ul></div>
+    <div class="ft-col"><h4>Institucional</h4><ul><li><a href="#">Sobre Nós</a></li><li><a href="#">Blog de Moda</a></li><li><a href="#">Privacidade</a></li><li><a href="#">Termos</a></li></ul></div>
+    <div class="ft-col"><h4>Minha Conta</h4><ul><li><a href="#">Minha Conta</a></li><li><a href="#">Meus Pedidos</a></li><li><a href="#">Lista de Desejos</a></li><li><a href="#">Cupons</a></li></ul></div>
+  </div>
+  <div class="ft-bot">
+    <p>© 2025 VIVA.MODA — Todos os direitos reservados.</p>
+    <div class="pay-icons">
+      <span class="pi pix">PIX</span><span class="pi bol">BOLETO</span>
+      <span class="pi">VISA</span><span class="pi">MASTER</span>
+      <span class="pi">ELO</span><span class="pi">AMEX</span>
+    </div>
+  </div>
+</footer>
+
+<a href="#" class="wa"><i class="fab fa-whatsapp"></i></a>
+
+<script>
+document.querySelectorAll('.sz').forEach(s=>s.addEventListener('click',function(){document.querySelectorAll('.sz').forEach(x=>x.classList.remove('active'));this.classList.add('active')}));
+document.querySelectorAll('.swatch').forEach(s=>s.addEventListener('click',function(){document.querySelectorAll('.swatch').forEach(x=>x.classList.remove('active'));this.classList.add('active')}));
+document.querySelectorAll('.filter-cats a').forEach(a=>a.addEventListener('click',function(e){e.preventDefault();document.querySelectorAll('.filter-cats a').forEach(x=>x.classList.remove('active'));this.classList.add('active')}));
+document.querySelectorAll('.vb').forEach(b=>b.addEventListener('click',function(){document.querySelectorAll('.vb').forEach(x=>x.classList.remove('active'));this.classList.add('active')}));
+document.querySelectorAll('.pg').forEach(p=>p.addEventListener('click',function(){document.querySelectorAll('.pg').forEach(x=>x.classList.remove('active'));this.classList.add('active')}));
+</script>
+</body>
+</html>

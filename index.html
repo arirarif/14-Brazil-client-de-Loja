@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VIVA.MODA — Moda Online | Entrega Rápida em Todo o Brasil</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --primary:#1a1a2e;
+  --accent:#e63946;
+  --accent-h:#c1121f;
+  --text:#2d2d2d;
+  --muted:#777;
+  --border:#e8e8e8;
+  --bg:#f8f9fa;
+  --white:#fff;
+  --gold:#f4c542;
+  --pix:#32bcad;
+  --green:#2d6a4f;
+  --font:'Poppins',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);color:var(--text);background:var(--white);overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+ul{list-style:none}
+button{font-family:var(--font)}
+
+/* ── ANNOUNCEMENT BAR ── */
+.ann{background:var(--primary);color:#fff;text-align:center;padding:9px 20px;font-size:13px;font-weight:500}
+.ann b{color:var(--gold)}
+
+/* ── HEADER ── */
+header{position:sticky;top:0;z-index:900;background:#fff;box-shadow:0 2px 12px rgba(0,0,0,.07);transition:.3s}
+.hdr{max-width:1320px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:70px}
+.logo{font-size:24px;font-weight:900;color:var(--primary);letter-spacing:-1px}
+.logo span{color:var(--accent)}
+nav ul{display:flex;gap:28px}
+nav a{font-size:13.5px;font-weight:500;color:var(--text);transition:.2s;position:relative}
+nav a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--accent);transition:.3s}
+nav a:hover{color:var(--accent)}
+nav a:hover::after{width:100%}
+.hdr-right{display:flex;align-items:center;gap:18px}
+.hdr-icon{background:none;border:none;cursor:pointer;font-size:17px;color:var(--text);transition:.2s;position:relative}
+.hdr-icon:hover{color:var(--accent)}
+.badge{position:absolute;top:-7px;right:-7px;background:var(--accent);color:#fff;font-size:9px;font-weight:700;width:17px;height:17px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;border:none;background:none;padding:4px}
+.burger span{width:23px;height:2px;background:var(--primary);border-radius:2px;transition:.3s;display:block}
+
+/* ── MOBILE DRAWER ── */
+.drawer-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:1100}
+.drawer-overlay.open{display:block}
+.drawer{position:absolute;top:0;left:0;width:280px;height:100%;background:#fff;padding:24px;overflow-y:auto;transform:translateX(-100%);transition:.35s}
+.drawer-overlay.open .drawer{transform:translateX(0)}
+.drawer-close{display:flex;justify-content:flex-end;margin-bottom:20px}
+.drawer-close button{background:none;border:none;font-size:20px;cursor:pointer;color:var(--text)}
+.drawer nav a{display:block;padding:13px 0;font-size:15px;font-weight:500;border-bottom:1px solid var(--border)}
+
+/* ── HERO ── */
+.hero{position:relative;height:90vh;min-height:520px;background:url('https://images.unsplash.com/photo-1445205170230-053b83016050?w=1600&q=80') center/cover no-repeat;display:flex;align-items:center}
+.hero::before{content:'';position:absolute;inset:0;background:linear-gradient(90deg,rgba(26,26,46,.88) 0%,rgba(26,26,46,.4) 55%,transparent 100%)}
+.hero-c{position:relative;max-width:1320px;margin:0 auto;padding:0 24px;color:#fff}
+.hero-tag{display:inline-block;background:var(--accent);color:#fff;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:6px 16px;border-radius:2px;margin-bottom:18px}
+.hero-title{font-size:clamp(36px,6vw,74px);font-weight:900;line-height:1.05;max-width:580px;margin-bottom:18px}
+.hero-sub{font-size:16px;opacity:.88;max-width:430px;margin-bottom:34px;line-height:1.75;font-weight:400}
+.ctas{display:flex;gap:14px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:15px 34px;border-radius:4px;font-size:14px;font-weight:600;letter-spacing:.3px;cursor:pointer;border:2px solid transparent;transition:.25s}
+.btn-red{background:var(--accent);color:#fff;border-color:var(--accent)}
+.btn-red:hover{background:var(--accent-h);border-color:var(--accent-h);transform:translateY(-2px);box-shadow:0 8px 24px rgba(230,57,70,.4)}
+.btn-ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.65)}
+.btn-ghost:hover{background:#fff;color:var(--primary);border-color:#fff}
+
+/* ── TRUST STRIP ── */
+.trust{background:var(--primary);padding:20px 24px}
+.trust-inner{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.ti{display:flex;align-items:center;gap:13px}
+.ti i{font-size:22px;color:var(--accent);flex-shrink:0}
+.ti strong{display:block;font-size:13px;font-weight:600;color:#fff}
+.ti span{font-size:11px;color:rgba(255,255,255,.65)}
+
+/* ── SECTION ── */
+section{padding:76px 24px}
+.wrap{max-width:1320px;margin:0 auto}
+.sec-head{text-align:center;margin-bottom:48px}
+.sec-tag{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.sec-title{font-size:clamp(22px,4vw,36px);font-weight:800;color:var(--primary);margin-bottom:14px}
+.sec-sub{font-size:14.5px;color:var(--muted);max-width:480px;margin:0 auto;line-height:1.75}
+
+/* ── CATEGORIES ── */
+.cats{background:var(--bg)}
+.cat-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto auto;gap:14px}
+.cat-card{position:relative;overflow:hidden;border-radius:10px;cursor:pointer}
+.cat-card:first-child{grid-row:span 2}
+.cat-card img{width:100%;height:100%;min-height:210px;object-fit:cover;transition:.55s ease}
+.cat-card:first-child img{min-height:445px}
+.cat-card:hover img{transform:scale(1.07)}
+.cat-ov{position:absolute;inset:0;background:linear-gradient(0deg,rgba(26,26,46,.78) 0%,transparent 60%);display:flex;align-items:flex-end;padding:22px;transition:.3s}
+.cat-card:hover .cat-ov{background:linear-gradient(0deg,rgba(26,26,46,.9) 0%,transparent 50%)}
+.cat-info h3{color:#fff;font-size:19px;font-weight:700;margin-bottom:3px}
+.cat-info span{color:rgba(255,255,255,.72);font-size:12.5px}
+.cat-arr{margin-left:auto;width:38px;height:38px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:13px;opacity:0;transform:translateX(8px);transition:.3s}
+.cat-card:hover .cat-arr{opacity:1;transform:translateX(0)}
+
+/* ── PRODUCTS ── */
+.prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+.pc{background:#fff;border-radius:10px;overflow:hidden;transition:.3s;position:relative;border:1px solid var(--border)}
+.pc:hover{box-shadow:0 14px 40px rgba(0,0,0,.1);transform:translateY(-5px);border-color:transparent}
+.pc-img{position:relative;overflow:hidden;background:var(--bg);aspect-ratio:3/4}
+.pc-img img{width:100%;height:100%;object-fit:cover;transition:.5s ease}
+.pc:hover .pc-img img{transform:scale(1.06)}
+.badge-wrap{position:absolute;top:10px;left:10px;z-index:2;display:flex;flex-direction:column;gap:5px}
+.tag{padding:4px 9px;border-radius:3px;font-size:10.5px;font-weight:700;letter-spacing:.4px;text-transform:uppercase}
+.tag-sale{background:var(--accent);color:#fff}
+.tag-new{background:var(--primary);color:#fff}
+.pc-acts{position:absolute;top:10px;right:10px;display:flex;flex-direction:column;gap:7px;opacity:0;transform:translateX(8px);transition:.3s;z-index:2}
+.pc:hover .pc-acts{opacity:1;transform:translateX(0)}
+.pa{width:35px;height:35px;background:#fff;border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:13px;color:var(--text);transition:.2s;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.pa:hover{background:var(--accent);color:#fff}
+.pc-cart{position:absolute;bottom:0;left:0;right:0;background:var(--primary);color:#fff;border:none;padding:12px;font-size:12.5px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;opacity:0;transform:translateY(100%);transition:.3s}
+.pc:hover .pc-cart{opacity:1;transform:translateY(0)}
+.pc-cart:hover{background:var(--accent)}
+.pc-info{padding:14px}
+.pc-cat{font-size:10.5px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+.pc-name{font-size:13.5px;font-weight:600;color:var(--primary);margin-bottom:7px;line-height:1.4}
+.pc-name a:hover{color:var(--accent)}
+.stars{color:var(--gold);font-size:11px}
+.pc-rev{font-size:11px;color:var(--muted)}
+.pc-price{display:flex;align-items:center;gap:7px;margin-top:8px}
+.p-now{font-size:16px;font-weight:700;color:var(--accent)}
+.p-old{font-size:12.5px;color:var(--muted);text-decoration:line-through}
+.p-pix{font-size:11px;color:var(--green);font-weight:600;margin-top:3px}
+
+/* ── PROMO BANNER ── */
+.promo{background:linear-gradient(135deg,var(--primary) 0%,#16213e 100%);padding:80px 24px;text-align:center;position:relative;overflow:hidden}
+.promo::before{content:'';position:absolute;top:-40%;left:-8%;width:380px;height:380px;background:var(--accent);opacity:.07;border-radius:50%}
+.promo::after{content:'';position:absolute;bottom:-25%;right:-4%;width:280px;height:280px;background:var(--gold);opacity:.06;border-radius:50%}
+.promo-c{position:relative;z-index:1}
+.promo-tag{display:inline-block;background:var(--accent);color:#fff;font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:6px 18px;border-radius:2px;margin-bottom:18px}
+.promo-num{font-size:clamp(70px,14vw,130px);font-weight:900;color:#fff;line-height:1;margin-bottom:14px}
+.promo-num span{color:var(--accent)}
+.promo-txt{font-size:19px;color:rgba(255,255,255,.8);margin-bottom:30px}
+
+/* ── TESTIMONIALS ── */
+.testi{background:var(--bg)}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.tc{background:#fff;padding:30px;border-radius:10px;box-shadow:0 2px 14px rgba(0,0,0,.05)}
+.tc-q{font-size:38px;color:var(--accent);line-height:1;margin-bottom:12px;font-family:Georgia,serif}
+.tc-stars{color:var(--gold);font-size:13px;margin-bottom:10px}
+.tc-text{font-size:13.5px;line-height:1.85;color:var(--muted);margin-bottom:22px}
+.tc-author{display:flex;align-items:center;gap:11px}
+.tc-author img{width:44px;height:44px;border-radius:50%;object-fit:cover}
+.tc-author strong{font-size:13.5px;font-weight:600;display:block}
+.tc-author span{font-size:12px;color:var(--muted)}
+
+/* ── NEWSLETTER ── */
+.nl{background:var(--accent);padding:58px 24px;text-align:center}
+.nl h2{color:#fff;font-size:clamp(20px,4vw,32px);font-weight:700;margin-bottom:10px}
+.nl p{color:rgba(255,255,255,.85);margin-bottom:26px;font-size:14.5px}
+.nl-form{display:flex;max-width:440px;margin:0 auto;border-radius:4px;overflow:hidden;box-shadow:0 8px 28px rgba(0,0,0,.18)}
+.nl-form input{flex:1;padding:15px 18px;border:none;font-size:13.5px;font-family:var(--font);outline:none}
+.nl-form button{background:var(--primary);color:#fff;border:none;padding:15px 24px;font-weight:600;font-size:13px;cursor:pointer;font-family:var(--font);transition:.2s;white-space:nowrap}
+.nl-form button:hover{background:#0d0d1a}
+
+/* ── FOOTER ── */
+footer{background:var(--primary);color:rgba(255,255,255,.75);padding:60px 24px 0}
+.ft-grid{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:38px;padding-bottom:46px;border-bottom:1px solid rgba(255,255,255,.09)}
+.ft-brand .logo{color:#fff;margin-bottom:14px}
+.ft-brand p{font-size:13.5px;line-height:1.85;max-width:270px}
+.ft-social{display:flex;gap:10px;margin-top:18px}
+.ft-social a{width:36px;height:36px;background:rgba(255,255,255,.07);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;transition:.2s}
+.ft-social a:hover{background:var(--accent);color:#fff}
+.ft-col h4{color:#fff;font-size:13.5px;font-weight:600;margin-bottom:18px;letter-spacing:.3px}
+.ft-col ul{display:flex;flex-direction:column;gap:9px}
+.ft-col a{font-size:13px;transition:.2s}
+.ft-col a:hover{color:var(--accent)}
+.ft-bot{max-width:1320px;margin:0 auto;padding:22px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px}
+.ft-bot p{font-size:12.5px}
+.pay-icons{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.pi{background:rgba(255,255,255,.1);border-radius:3px;padding:5px 9px;font-size:10.5px;font-weight:700;color:#fff;letter-spacing:.4px}
+.pi.pix{background:var(--pix);color:#fff}
+.pi.bol{background:var(--gold);color:#333}
+
+/* ── WHATSAPP FAB ── */
+.wa{position:fixed;bottom:26px;right:26px;background:#25d366;color:#fff;width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:25px;box-shadow:0 4px 18px rgba(37,211,102,.5);z-index:999;transition:.3s;animation:wa-pulse 2.2s infinite}
+.wa:hover{transform:scale(1.12);box-shadow:0 6px 26px rgba(37,211,102,.75)}
+@keyframes wa-pulse{0%,100%{box-shadow:0 4px 18px rgba(37,211,102,.5)}50%{box-shadow:0 4px 28px rgba(37,211,102,.85)}}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1024px){.prod-grid{grid-template-columns:repeat(3,1fr)}.trust-inner{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){
+  nav,.hdr .search-d{display:none}
+  .burger{display:flex}
+  .hero{height:72vh}
+  .prod-grid{grid-template-columns:repeat(2,1fr);gap:14px}
+  .cat-grid{grid-template-columns:1fr 1fr}
+  .cat-card:first-child{grid-column:span 2;grid-row:span 1}
+  .cat-card:first-child img{min-height:250px}
+  .testi-grid{grid-template-columns:1fr}
+  .ft-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:480px){
+  .prod-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+  .ft-grid{grid-template-columns:1fr}
+  .nl-form{flex-direction:column}
+  .hero-title{font-size:30px}
+  .trust-inner{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<div class="ann">🚚 Frete grátis acima de <b>R$ 299</b> &nbsp;·&nbsp; 12x sem juros &nbsp;·&nbsp; <b>5% OFF no Pix</b></div>
+
+<header id="hdr">
+  <div class="hdr">
+    <a href="index.html" class="logo">VIVA<span>.</span>MODA</a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="shop.html">Loja</a></li>
+        <li><a href="shop.html">Feminino</a></li>
+        <li><a href="shop.html">Masculino</a></li>
+        <li><a href="shop.html">Promoções</a></li>
+        <li><a href="#">Contato</a></li>
+      </ul>
+    </nav>
+    <div class="hdr-right">
+      <button class="hdr-icon search-d"><i class="fas fa-search"></i></button>
+      <button class="hdr-icon"><i class="fas fa-heart"></i></button>
+      <button class="hdr-icon" style="position:relative"><i class="fas fa-shopping-bag"></i><span class="badge">3</span></button>
+      <button class="hdr-icon"><i class="fas fa-user"></i></button>
+      <button class="burger" onclick="toggleDrawer()"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="drawer-overlay" id="drawer" onclick="closeDrawer(event)">
+  <div class="drawer">
+    <div class="drawer-close"><button onclick="toggleDrawer()"><i class="fas fa-times"></i></button></div>
+    <nav>
+      <a href="index.html">Início</a>
+      <a href="shop.html">Loja</a>
+      <a href="shop.html">Feminino</a>
+      <a href="shop.html">Masculino</a>
+      <a href="shop.html">Promoções</a>
+      <a href="#">Contato</a>
+    </nav>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-c">
+    <div class="hero-tag">Nova Coleção 2025</div>
+    <h1 class="hero-title">Estilo que<br>Fala por Você</h1>
+    <p class="hero-sub">Descubra as últimas tendências com entrega rápida em todo o Brasil. Qualidade e estilo ao melhor preço.</p>
+    <div class="ctas">
+      <a href="shop.html" class="btn btn-red"><i class="fas fa-shopping-bag"></i> Comprar Agora</a>
+      <a href="shop.html" class="btn btn-ghost">Ver Coleção</a>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<div class="trust">
+  <div class="trust-inner">
+    <div class="ti"><i class="fas fa-truck-fast"></i><div><strong>Entrega Rápida</strong><span>Correios e transportadoras parceiras</span></div></div>
+    <div class="ti"><i class="fas fa-shield-halved"></i><div><strong>Compra 100% Segura</strong><span>Certificado SSL — dados protegidos</span></div></div>
+    <div class="ti"><i class="fas fa-rotate-left"></i><div><strong>Troca Gratuita</strong><span>30 dias para trocar ou devolver</span></div></div>
+    <div class="ti"><i class="fas fa-bolt"></i><div><strong>Pix com 5% OFF</strong><span>Pagamento instantâneo e seguro</span></div></div>
+  </div>
+</div>
+
+<!-- CATEGORIES -->
+<section class="cats">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-tag">Explore</p>
+      <h2 class="sec-title">Compre por Categoria</h2>
+      <p class="sec-sub">Encontre tudo o que você precisa, organizado e fácil de navegar</p>
+    </div>
+    <div class="cat-grid">
+      <a href="shop.html" class="cat-card">
+        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=700&q=80" alt="Feminino" loading="lazy">
+        <div class="cat-ov">
+          <div class="cat-info"><h3>Feminino</h3><span>248 produtos</span></div>
+          <div class="cat-arr"><i class="fas fa-arrow-right"></i></div>
+        </div>
+      </a>
+      <a href="shop.html" class="cat-card">
+        <img src="https://images.unsplash.com/photo-1516257984-b1b4d707412e?w=600&q=80" alt="Masculino" loading="lazy">
+        <div class="cat-ov">
+          <div class="cat-info"><h3>Masculino</h3><span>186 produtos</span></div>
+          <div class="cat-arr"><i class="fas fa-arrow-right"></i></div>
+        </div>
+      </a>
+      <a href="shop.html" class="cat-card">
+        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80" alt="Calçados" loading="lazy">
+        <div class="cat-ov">
+          <div class="cat-info"><h3>Calçados</h3><span>124 produtos</span></div>
+          <div class="cat-arr"><i class="fas fa-arrow-right"></i></div>
+        </div>
+      </a>
+      <a href="shop.html" class="cat-card">
+        <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&q=80" alt="Acessórios" loading="lazy">
+        <div class="cat-ov">
+          <div class="cat-info"><h3>Acessórios</h3><span>93 produtos</span></div>
+          <div class="cat-arr"><i class="fas fa-arrow-right"></i></div>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED PRODUCTS -->
+<section>
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-tag">Mais Vendidos</p>
+      <h2 class="sec-title">Produtos em Destaque</h2>
+      <p class="sec-sub">Os favoritos dos nossos clientes esta semana</p>
+    </div>
+    <div class="prod-grid">
+
+      <div class="pc">
+        <div class="pc-img">
+          <div class="badge-wrap"><span class="tag tag-sale">-30%</span></div>
+          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=500&q=80" alt="Vestido Floral" loading="lazy">
+          <div class="pc-acts">
+            <button class="pa"><i class="fas fa-heart"></i></button>
+            <button class="pa"><i class="fas fa-eye"></i></button>
+            <button class="pa"><i class="fas fa-shuffle"></i></button>
+          </div>
+          <button class="pc-cart"><i class="fas fa-shopping-cart"></i> Adicionar ao Carrinho</button>
+        </div>
+        <div class="pc-info">
+          <p class="pc-cat">Feminino</p>
+          <h3 class="pc-name"><a href="product.html">Vestido Floral Verão</a></h3>
+          <div style="display:flex;align-items:center;gap:5px;margin-bottom:7px"><span class="stars">★★★★★</span><span class="pc-rev">(87)</span></div>
+          <div class="pc-price"><span class="p-now">R$ 129,90</span><span class="p-old">R$ 185,90</span></div>
+          <p class="p-pix"><i class="fas fa-bolt"></i> R$ 123,40 no Pix</p>
+        </div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-img">
+          <div class="badge-wrap"><span class="tag tag-new">Novo</span></div>
+          <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=500&q=80" alt="Jaqueta" loading="lazy">
+          <div class="pc-acts">
+            <button class="pa"><i class="fas fa-heart"></i></button>
+            <button class="pa"><i class="fas fa-eye"></i></button>
+            <button class="pa"><i class="fas fa-shuffle"></i></button>
+          </div>
+          <button class="pc-cart"><i class="fas fa-shopping-cart"></i> Adicionar ao Carrinho</button>
+        </div>
+        <div class="pc-info">
+          <p class="pc-cat">Masculino</p>
+          <h3 class="pc-name"><a href="product.html">Jaqueta Slim Fit Premium</a></h3>
+          <div style="display:flex;align-items:center;gap:5px;margin-bottom:7px"><span class="stars">★★★★☆</span><span class="pc-rev">(42)</span></div>
+          <div class="pc-price"><span class="p-now">R$ 249,90</span></div>
+          <p class="p-pix"><i class="fas fa-bolt"></i> R$ 237,40 no Pix</p>
+        </div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-img">
+          <div class="badge-wrap"><span class="tag tag-sale">-20%</span></div>
+          <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=500&q=80" alt="Tênis" loading="lazy">
+          <div class="pc-acts">
+            <button class="pa"><i class="fas fa-heart"></i></button>
+            <button class="pa"><i class="fas fa-eye"></i></button>
+            <button class="pa"><i class="fas fa-shuffle"></i></button>
+          </div>
+          <button class="pc-cart"><i class="fas fa-shopping-cart"></i> Adicionar ao Carrinho</button>
+        </div>
+        <div class="pc-info">
+          <p class="pc-cat">Calçados</p>
+          <h3 class="pc-name"><a href="product.html">Tênis Casual Moderno</a></h3>
+          <div style="display:flex;align-items:center;gap:5px;margin-bottom:7px"><span class="stars">★★★★★</span><span class="pc-rev">(136)</span></div>
+          <div class="pc-price"><span class="p-now">R$ 189,90</span><span class="p-old">R$ 237,90</span></div>
+          <p class="p-pix"><i class="fas fa-bolt"></i> R$ 180,40 no Pix</p>
+        </div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-img">
+          <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=500&q=80" alt="Blazer" loading="lazy">
+          <div class="pc-acts">
+            <button class="pa"><i class="fas fa-heart"></i></button>
+            <button class="pa"><i class="fas fa-eye"></i></button>
+            <button class="pa"><i class="fas fa-shuffle"></i></button>
+          </div>
+          <button class="pc-cart"><i class="fas fa-shopping-cart"></i> Adicionar ao Carrinho</button>
+        </div>
+        <div class="pc-info">
+          <p class="pc-cat">Feminino</p>
+          <h3 class="pc-name"><a href="product.html">Blazer Executivo Feminino</a></h3>
+          <div style="display:flex;align-items:center;gap:5px;margin-bottom:7px"><span class="stars">★★★★★</span><span class="pc-rev">(61)</span></div>
+          <div class="pc-price"><span class="p-now">R$ 319,90</span></div>
+          <p class="p-pix"><i class="fas fa-bolt"></i> R$ 303,90 no Pix</p>
+        </div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-img">
+          <div class="badge-wrap"><span class="tag tag-sale">-40%</span></div>
+          <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=500&q=80" alt="Camisa" loading="lazy">
+          <div class="pc-acts">
+            <button class="pa"><i class="fas fa-heart"></i></button>
+            <button class="pa"><i class="fas fa-eye"></i></button>
+            <button class="pa"><i class="fas fa-shuffle"></i></button>
+          </div>
+          <button class="pc-cart"><i class="fas fa-shopping-cart"></i> Adicionar ao Carrinho</button>
+        </div>
+        <div class="pc-info">
+          <p class="pc-cat">Masculino</p>
+          <h3 class="pc-name"><a href="product.html">Camisa Social Oxford</a></h3>
+          <div style="display:flex;align-items:center;gap:5px;margin-bottom:7px"><span class="stars">★★★★☆</span><span class="pc-rev">(29)</span></div>
+          <div class="pc-price"><span class="p-now">R$ 89,90</span><span class="p-old">R$ 149,90</span></div>
+          <p class="p-pix"><i class="fas fa-bolt"></i> R$ 85,40 no Pix</p>
+        </div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-img">
+          <div class="badge-wrap"><span class="tag tag-new">Novo</span></div>
+          <img src="https://images.unsplash.com/photo-1467043237213-65f2da53396f?w=500&q=80" alt="Calça" loading="lazy">
+          <div class="pc-acts">
+            <button class="pa"><i class="fas fa-heart"></i></button>
+            <button class="pa"><i class="fas fa-eye"></i></button>
+            <button class="pa"><i class="fas fa-shuffle"></i></button>
+          </div>
+          <button class="pc-cart"><i class="fas fa-shopping-cart"></i> Adicionar ao Carrinho</button>
+        </div>
+        <div class="pc-info">
+          <p class="pc-cat">Feminino</p>
+          <h3 class="pc-name"><a href="product.html">Calça Jeans Skinny</a></h3>
+          <div style="display:flex;align-items:center;gap:5px;margin-bottom:7px"><span class="stars">★★★★★</span><span class="pc-rev">(94)</span></div>
+          <div class="pc-price"><span class="p-now">R$ 159,90</span></div>
+          <p class="p-pix"><i class="fas fa-bolt"></i> R$ 151,90 no Pix</p>
+        </div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-img">
+          <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&q=80" alt="Bolsa" loading="lazy">
+          <div class="pc-acts">
+            <button class="pa"><i class="fas fa-heart"></i></button>
+            <button class="pa"><i class="fas fa-eye"></i></button>
+            <button class="pa"><i class="fas fa-shuffle"></i></button>
+          </div>
+          <button class="pc-cart"><i class="fas fa-shopping-cart"></i> Adicionar ao Carrinho</button>
+        </div>
+        <div class="pc-info">
+          <p class="pc-cat">Acessórios</p>
+          <h3 class="pc-name"><a href="product.html">Bolsa Couro Sintético</a></h3>
+          <div style="display:flex;align-items:center;gap:5px;margin-bottom:7px"><span class="stars">★★★★☆</span><span class="pc-rev">(58)</span></div>
+          <div class="pc-price"><span class="p-now">R$ 199,90</span></div>
+          <p class="p-pix"><i class="fas fa-bolt"></i> R$ 189,90 no Pix</p>
+        </div>
+      </div>
+
+      <div class="pc">
+        <div class="pc-img">
+          <div class="badge-wrap"><span class="tag tag-sale">-25%</span></div>
+          <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=500&q=80" alt="Look" loading="lazy">
+          <div class="pc-acts">
+            <button class="pa"><i class="fas fa-heart"></i></button>
+            <button class="pa"><i class="fas fa-eye"></i></button>
+            <button class="pa"><i class="fas fa-shuffle"></i></button>
+          </div>
+          <button class="pc-cart"><i class="fas fa-shopping-cart"></i> Adicionar ao Carrinho</button>
+        </div>
+        <div class="pc-info">
+          <p class="pc-cat">Feminino</p>
+          <h3 class="pc-name"><a href="product.html">Look Completo Casual</a></h3>
+          <div style="display:flex;align-items:center;gap:5px;margin-bottom:7px"><span class="stars">★★★★★</span><span class="pc-rev">(113)</span></div>
+          <div class="pc-price"><span class="p-now">R$ 274,90</span><span class="p-old">R$ 369,90</span></div>
+          <p class="p-pix"><i class="fas fa-bolt"></i> R$ 261,15 no Pix</p>
+        </div>
+      </div>
+
+    </div>
+    <div style="text-align:center;margin-top:46px">
+      <a href="shop.html" class="btn btn-red">Ver Todos os Produtos <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </div>
+</section>
+
+<!-- PROMO -->
+<div class="promo">
+  <div class="promo-c">
+    <div class="promo-tag">Liquidação de Temporada</div>
+    <div class="promo-num">ATÉ <span>70</span>%</div>
+    <p class="promo-txt">de desconto em centenas de produtos selecionados</p>
+    <a href="shop.html" class="btn btn-red">Aproveitar Agora <i class="fas fa-tag"></i></a>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="testi">
+  <div class="wrap">
+    <div class="sec-head">
+      <p class="sec-tag">Avaliações</p>
+      <h2 class="sec-title">O que nossos clientes dizem</h2>
+      <p class="sec-sub">Mais de 10.000 clientes satisfeitos em todo o Brasil</p>
+    </div>
+    <div class="testi-grid">
+      <div class="tc">
+        <div class="tc-q">"</div>
+        <div class="tc-stars">★★★★★</div>
+        <p class="tc-text">Amei a experiência de compra! O site é super fácil, achei o produto em segundos e o envio foi rápido demais. Já indiquei para várias amigas!</p>
+        <div class="tc-author">
+          <img src="https://i.pravatar.cc/46?img=47" alt="Ana">
+          <div><strong>Ana Beatriz S.</strong><span>São Paulo, SP</span></div>
+        </div>
+      </div>
+      <div class="tc">
+        <div class="tc-q">"</div>
+        <div class="tc-stars">★★★★★</div>
+        <p class="tc-text">Qualidade incrível pelo preço! O vestido chegou em 3 dias e ficou lindo. O atendimento via WhatsApp foi excelente. Nota 10, super recomendo!</p>
+        <div class="tc-author">
+          <img src="https://i.pravatar.cc/46?img=32" alt="Carla">
+          <div><strong>Carla Mendes</strong><span>Rio de Janeiro, RJ</span></div>
+        </div>
+      </div>
+      <div class="tc">
+        <div class="tc-q">"</div>
+        <div class="tc-stars">★★★★★</div>
+        <p class="tc-text">Paguei no Pix e ganhei desconto na hora! Consigo acompanhar todos os pedidos pelo painel. Loja muito organizada e produto de qualidade.</p>
+        <div class="tc-author">
+          <img src="https://i.pravatar.cc/46?img=11" alt="João">
+          <div><strong>João Paulo R.</strong><span>Belo Horizonte, MG</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<div class="nl">
+  <h2>Receba Ofertas Exclusivas</h2>
+  <p>Cadastre seu e-mail e seja o primeiro a saber das nossas promoções e lançamentos.</p>
+  <form class="nl-form" onsubmit="return false;">
+    <input type="email" placeholder="Seu melhor e-mail...">
+    <button>Quero Ofertas!</button>
+  </form>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-grid">
+    <div class="ft-brand">
+      <div class="logo">VIVA<span style="color:var(--accent)">.</span>MODA</div>
+      <p>Sua loja de moda online com as melhores tendências, entrega rápida e pagamento seguro em todo o Brasil.</p>
+      <div class="ft-social">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-tiktok"></i></a>
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+      </div>
+    </div>
+    <div class="ft-col">
+      <h4>Atendimento</h4>
+      <ul>
+        <li><a href="#">Central de Ajuda</a></li>
+        <li><a href="#">Rastrear Pedido</a></li>
+        <li><a href="#">Trocas e Devoluções</a></li>
+        <li><a href="#">Fale Conosco</a></li>
+        <li><a href="#">WhatsApp</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Institucional</h4>
+      <ul>
+        <li><a href="#">Sobre Nós</a></li>
+        <li><a href="#">Blog de Moda</a></li>
+        <li><a href="#">Política de Privacidade</a></li>
+        <li><a href="#">Termos de Uso</a></li>
+        <li><a href="#">Trabalhe Conosco</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Minha Conta</h4>
+      <ul>
+        <li><a href="#">Minha Conta</a></li>
+        <li><a href="#">Meus Pedidos</a></li>
+        <li><a href="#">Lista de Desejos</a></li>
+        <li><a href="#">Programa de Pontos</a></li>
+        <li><a href="#">Cupons</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bot">
+    <p>© 2025 VIVA.MODA — Todos os direitos reservados. CNPJ: 00.000.000/0001-00</p>
+    <div class="pay-icons">
+      <span class="pi pix">PIX</span>
+      <span class="pi bol">BOLETO</span>
+      <span class="pi">VISA</span>
+      <span class="pi">MASTER</span>
+      <span class="pi">ELO</span>
+      <span class="pi">AMEX</span>
+      <span class="pi">HIPERCARD</span>
+    </div>
+  </div>
+</footer>
+
+<a href="#" class="wa"><i class="fab fa-whatsapp"></i></a>
+
+<script>
+function toggleDrawer(){
+  const d=document.getElementById('drawer');
+  d.classList.toggle('open');
+  document.body.style.overflow=d.classList.contains('open')?'hidden':'';
+}
+function closeDrawer(e){if(e.target===document.getElementById('drawer'))toggleDrawer();}
+window.addEventListener('scroll',()=>{
+  document.getElementById('hdr').style.boxShadow=window.scrollY>8?'0 4px 20px rgba(0,0,0,.12)':'0 2px 12px rgba(0,0,0,.07)';
+});
+</script>
+</body>
+</html>

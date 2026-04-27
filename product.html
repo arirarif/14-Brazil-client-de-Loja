@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vestido Floral Verão — VIVA.MODA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --primary:#1a1a2e;--accent:#e63946;--accent-h:#c1121f;
+  --text:#2d2d2d;--muted:#777;--border:#e8e8e8;
+  --bg:#f8f9fa;--white:#fff;--gold:#f4c542;--pix:#32bcad;--green:#2d6a4f;
+  --font:'Poppins',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);color:var(--text);background:var(--white);overflow-x:hidden}
+a{text-decoration:none;color:inherit}img{max-width:100%;display:block}ul{list-style:none}button{font-family:var(--font)}
+
+.ann{background:var(--primary);color:#fff;text-align:center;padding:9px 20px;font-size:13px;font-weight:500}
+.ann b{color:var(--gold)}
+header{position:sticky;top:0;z-index:900;background:#fff;box-shadow:0 2px 12px rgba(0,0,0,.07)}
+.hdr{max-width:1320px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:70px}
+.logo{font-size:24px;font-weight:900;color:var(--primary);letter-spacing:-1px}
+.logo span{color:var(--accent)}
+nav ul{display:flex;gap:28px}
+nav a{font-size:13.5px;font-weight:500;color:var(--text);transition:.2s;position:relative}
+nav a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:2px;background:var(--accent);transition:.3s}
+nav a:hover{color:var(--accent)}
+nav a:hover::after{width:100%}
+.hdr-right{display:flex;align-items:center;gap:18px}
+.hdr-icon{background:none;border:none;cursor:pointer;font-size:17px;color:var(--text);transition:.2s;position:relative}
+.hdr-icon:hover{color:var(--accent)}
+.badge{position:absolute;top:-7px;right:-7px;background:var(--accent);color:#fff;font-size:9px;font-weight:700;width:17px;height:17px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;border:none;background:none;padding:4px}
+.burger span{width:23px;height:2px;background:var(--primary);border-radius:2px;display:block}
+
+/* BREADCRUMB */
+.breadcrumb{background:var(--bg);padding:14px 24px;border-bottom:1px solid var(--border)}
+.bc-inner{max-width:1320px;margin:0 auto;display:flex;align-items:center;gap:8px;font-size:13px;color:var(--muted)}
+.bc-inner a:hover{color:var(--accent)}
+.bc-inner span{color:var(--text);font-weight:500}
+
+/* PRODUCT LAYOUT */
+.product-section{max-width:1320px;margin:40px auto;padding:0 24px}
+.product-layout{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start}
+
+/* GALLERY */
+.gallery{}
+.gallery-main{position:relative;border-radius:12px;overflow:hidden;background:var(--bg);aspect-ratio:4/5;margin-bottom:12px;border:1px solid var(--border)}
+.gallery-main img{width:100%;height:100%;object-fit:cover;transition:.4s ease;cursor:zoom-in}
+.gallery-main img:hover{transform:scale(1.04)}
+.gm-badge{position:absolute;top:16px;left:16px;background:var(--accent);color:#fff;font-size:11px;font-weight:700;letter-spacing:.4px;padding:5px 12px;border-radius:3px;text-transform:uppercase}
+.gallery-thumbs{display:flex;gap:10px}
+.thumb{width:80px;height:96px;border-radius:7px;overflow:hidden;cursor:pointer;border:2.5px solid transparent;transition:.2s;flex-shrink:0}
+.thumb.active{border-color:var(--accent)}
+.thumb:hover{border-color:var(--primary)}
+.thumb img{width:100%;height:100%;object-fit:cover}
+
+/* PRODUCT INFO */
+.pinfo{}
+.pinfo-brand{font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.pinfo-title{font-size:clamp(22px,3.5vw,30px);font-weight:800;color:var(--primary);line-height:1.2;margin-bottom:14px}
+.pinfo-rating{display:flex;align-items:center;gap:10px;margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid var(--border)}
+.stars-lg{color:var(--gold);font-size:16px;letter-spacing:2px}
+.rating-count{font-size:13px;color:var(--muted)}
+.rating-count a{color:var(--accent);font-weight:600}
+.in-stock{display:inline-flex;align-items:center;gap:6px;background:rgba(45,106,79,.1);color:var(--green);font-size:12.5px;font-weight:600;padding:5px 12px;border-radius:20px;margin-left:10px}
+.in-stock::before{content:'';width:8px;height:8px;background:var(--green);border-radius:50%}
+
+/* PRICING */
+.pricing{margin-bottom:20px}
+.price-main{display:flex;align-items:baseline;gap:12px;margin-bottom:8px}
+.price-now{font-size:34px;font-weight:800;color:var(--accent)}
+.price-old{font-size:18px;color:var(--muted);text-decoration:line-through}
+.price-off{background:var(--accent);color:#fff;font-size:11px;font-weight:700;padding:3px 8px;border-radius:3px;letter-spacing:.3px}
+.pay-options{background:var(--bg);border-radius:8px;padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+.pay-row{display:flex;align-items:center;gap:10px;font-size:13px}
+.pay-badge{display:inline-flex;align-items:center;gap:5px;background:var(--pix);color:#fff;font-size:11px;font-weight:700;padding:3px 9px;border-radius:3px}
+.pay-badge.bol{background:var(--gold);color:#333}
+.pay-badge.card{background:var(--primary)}
+
+/* VARIANTS */
+.variant-section{margin-bottom:18px}
+.variant-label{font-size:13px;font-weight:600;color:var(--primary);margin-bottom:10px}
+.variant-label span{font-weight:400;color:var(--muted);margin-left:6px}
+.color-swatches{display:flex;gap:9px;flex-wrap:wrap}
+.swatch{width:30px;height:30px;border-radius:50%;cursor:pointer;border:2.5px solid transparent;transition:.2s;position:relative}
+.swatch:hover,.swatch.active{border-color:var(--primary);transform:scale(1.12)}
+.swatch.active::after{content:'✓';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.5)}
+.size-btns{display:flex;flex-wrap:wrap;gap:8px}
+.sz{min-width:46px;height:46px;padding:0 10px;border:1.5px solid var(--border);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:600;cursor:pointer;transition:.2s;background:#fff}
+.sz:hover,.sz.active{border-color:var(--accent);background:var(--accent);color:#fff}
+.sz.out{opacity:.35;cursor:not-allowed;text-decoration:line-through}
+.size-guide{font-size:12px;color:var(--accent);font-weight:600;cursor:pointer;margin-top:8px;display:inline-flex;align-items:center;gap:5px}
+
+/* QTY + ADD */
+.add-section{display:flex;gap:12px;margin-bottom:20px;align-items:center}
+.qty-ctrl{display:flex;align-items:center;border:1.5px solid var(--border);border-radius:6px;overflow:hidden}
+.qty-btn{width:42px;height:52px;border:none;background:#fff;font-size:18px;cursor:pointer;color:var(--text);transition:.2s;display:flex;align-items:center;justify-content:center}
+.qty-btn:hover{background:var(--bg)}
+.qty-inp{width:50px;height:52px;border:none;border-left:1.5px solid var(--border);border-right:1.5px solid var(--border);text-align:center;font-size:15px;font-weight:600;font-family:var(--font);outline:none}
+.btn-cart{flex:1;padding:16px 24px;background:var(--primary);color:#fff;border:none;border-radius:6px;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:9px;transition:.25s;letter-spacing:.3px}
+.btn-cart:hover{background:var(--accent);transform:translateY(-2px);box-shadow:0 8px 24px rgba(230,57,70,.35)}
+.btn-buy{width:100%;padding:16px;background:var(--accent);color:#fff;border:none;border-radius:6px;font-size:15px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:9px;transition:.25s;margin-bottom:14px}
+.btn-buy:hover{background:var(--accent-h);transform:translateY(-2px)}
+.secondary-actions{display:flex;gap:14px;margin-bottom:22px}
+.sa-btn{flex:1;padding:11px;border:1.5px solid var(--border);border-radius:6px;background:#fff;font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;transition:.2s;color:var(--text)}
+.sa-btn:hover{border-color:var(--accent);color:var(--accent)}
+
+/* DELIVERY INFO */
+.delivery-box{background:var(--bg);border-radius:8px;padding:16px;margin-bottom:22px}
+.delivery-box h4{font-size:13px;font-weight:700;color:var(--primary);margin-bottom:12px;display:flex;align-items:center;gap:7px}
+.delivery-form{display:flex;gap:8px}
+.delivery-form input{flex:1;padding:10px 14px;border:1.5px solid var(--border);border-radius:5px;font-size:13px;font-family:var(--font);outline:none;transition:.2s}
+.delivery-form input:focus{border-color:var(--accent)}
+.delivery-form button{padding:10px 18px;background:var(--primary);color:#fff;border:none;border-radius:5px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;transition:.2s}
+.delivery-form button:hover{background:var(--accent)}
+.delivery-result{margin-top:12px;display:flex;flex-direction:column;gap:8px}
+.dr-row{display:flex;align-items:center;justify-content:space-between;font-size:13px;background:#fff;padding:10px 14px;border-radius:5px;border:1px solid var(--border)}
+.dr-row .carrier{font-weight:600;color:var(--primary);display:flex;align-items:center;gap:6px}
+.dr-row .price{font-weight:700;color:var(--green)}
+.dr-row .days{color:var(--muted)}
+
+/* PRODUCT META */
+.prod-meta{font-size:12.5px;color:var(--muted);display:flex;flex-direction:column;gap:6px;padding-top:16px;border-top:1px solid var(--border)}
+.prod-meta span b{color:var(--text);font-weight:600}
+
+/* TABS */
+.tabs-section{margin-top:56px}
+.tabs{display:flex;border-bottom:2px solid var(--border);gap:0}
+.tab{padding:14px 28px;font-size:14px;font-weight:600;cursor:pointer;color:var(--muted);transition:.2s;border-bottom:2.5px solid transparent;margin-bottom:-2px;position:relative}
+.tab:hover{color:var(--primary)}
+.tab.active{color:var(--accent);border-bottom-color:var(--accent)}
+.tab-content{padding:34px 0;display:none}
+.tab-content.active{display:block}
+.tab-content p{font-size:14px;line-height:1.9;color:var(--muted);margin-bottom:14px}
+.tab-content ul{display:flex;flex-direction:column;gap:8px;margin:14px 0}
+.tab-content li{font-size:13.5px;color:var(--muted);padding-left:16px;position:relative;line-height:1.6}
+.tab-content li::before{content:'•';position:absolute;left:0;color:var(--accent);font-weight:700}
+.specs-table{width:100%;border-collapse:collapse}
+.specs-table td{padding:11px 16px;font-size:13.5px;border-bottom:1px solid var(--border)}
+.specs-table tr:nth-child(even) td{background:var(--bg)}
+.specs-table td:first-child{font-weight:600;color:var(--primary);width:40%}
+
+/* REVIEWS */
+.review-summary{display:flex;gap:32px;align-items:center;background:var(--bg);border-radius:10px;padding:24px;margin-bottom:28px}
+.rev-score{text-align:center}
+.rev-big{font-size:52px;font-weight:900;color:var(--primary);line-height:1}
+.rev-stars{color:var(--gold);font-size:18px;margin:6px 0}
+.rev-count{font-size:12px;color:var(--muted)}
+.rev-bars{flex:1;display:flex;flex-direction:column;gap:7px}
+.rb-row{display:flex;align-items:center;gap:10px;font-size:12.5px}
+.rb-label{width:36px;color:var(--muted)}
+.rb-bar{flex:1;height:7px;background:var(--border);border-radius:4px;overflow:hidden}
+.rb-fill{height:100%;background:var(--gold);border-radius:4px}
+.rb-count{width:24px;text-align:right;color:var(--muted)}
+.review-list{display:flex;flex-direction:column;gap:22px}
+.rv{border-bottom:1px solid var(--border);padding-bottom:22px}
+.rv-head{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.rv-avatar img{width:44px;height:44px;border-radius:50%;object-fit:cover}
+.rv-meta strong{font-size:14px;font-weight:600;display:block}
+.rv-meta span{font-size:12px;color:var(--muted)}
+.rv-stars{color:var(--gold);font-size:13px;margin-left:auto}
+.rv-verified{background:rgba(45,106,79,.1);color:var(--green);font-size:11px;font-weight:600;padding:2px 8px;border-radius:10px;margin-left:8px}
+.rv-text{font-size:13.5px;line-height:1.75;color:var(--muted)}
+
+/* RELATED */
+.related-section{max-width:1320px;margin:60px auto 40px;padding:0 24px}
+.sec-head{text-align:center;margin-bottom:36px}
+.sec-tag{font-size:11px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.sec-title{font-size:clamp(20px,3.5vw,30px);font-weight:800;color:var(--primary)}
+.related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+
+/* PC cards reused */
+.pc{background:#fff;border-radius:10px;overflow:hidden;transition:.3s;position:relative;border:1px solid var(--border)}
+.pc:hover{box-shadow:0 14px 40px rgba(0,0,0,.1);transform:translateY(-5px);border-color:transparent}
+.pc-img{position:relative;overflow:hidden;background:var(--bg);aspect-ratio:3/4}
+.pc-img img{width:100%;height:100%;object-fit:cover;transition:.5s ease}
+.pc:hover .pc-img img{transform:scale(1.06)}
+.badge-wrap{position:absolute;top:10px;left:10px;z-index:2}
+.tag{padding:4px 9px;border-radius:3px;font-size:10.5px;font-weight:700;text-transform:uppercase}
+.tag-sale{background:var(--accent);color:#fff}
+.tag-new{background:var(--primary);color:#fff}
+.pc-acts{position:absolute;top:10px;right:10px;display:flex;flex-direction:column;gap:7px;opacity:0;transform:translateX(8px);transition:.3s;z-index:2}
+.pc:hover .pc-acts{opacity:1;transform:translateX(0)}
+.pa{width:35px;height:35px;background:#fff;border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:13px;transition:.2s;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.pa:hover{background:var(--accent);color:#fff}
+.pc-cart{position:absolute;bottom:0;left:0;right:0;background:var(--primary);color:#fff;border:none;padding:12px;font-size:12.5px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px;opacity:0;transform:translateY(100%);transition:.3s}
+.pc:hover .pc-cart{opacity:1;transform:translateY(0)}
+.pc-cart:hover{background:var(--accent)}
+.pc-info{padding:14px}
+.pc-cat{font-size:10.5px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+.pc-name{font-size:13.5px;font-weight:600;color:var(--primary);margin-bottom:7px}
+.pc-name a:hover{color:var(--accent)}
+.stars{color:var(--gold);font-size:11px}
+.pc-price{display:flex;align-items:center;gap:7px;margin-top:7px}
+.p-now{font-size:15px;font-weight:700;color:var(--accent)}
+.p-old{font-size:12px;color:var(--muted);text-decoration:line-through}
+
+/* FOOTER */
+.wa{position:fixed;bottom:26px;right:26px;background:#25d366;color:#fff;width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:25px;box-shadow:0 4px 18px rgba(37,211,102,.5);z-index:999;transition:.3s;animation:wa-pulse 2.2s infinite}
+.wa:hover{transform:scale(1.12)}
+@keyframes wa-pulse{0%,100%{box-shadow:0 4px 18px rgba(37,211,102,.5)}50%{box-shadow:0 4px 28px rgba(37,211,102,.85)}}
+footer{background:var(--primary);color:rgba(255,255,255,.75);padding:50px 24px 0;margin-top:10px}
+.ft-grid{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:38px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.09)}
+.ft-brand .logo{color:#fff;margin-bottom:14px}
+.ft-brand p{font-size:13px;line-height:1.85;max-width:260px}
+.ft-social{display:flex;gap:10px;margin-top:18px}
+.ft-social a{width:36px;height:36px;background:rgba(255,255,255,.07);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;transition:.2s}
+.ft-social a:hover{background:var(--accent);color:#fff}
+.ft-col h4{color:#fff;font-size:13px;font-weight:600;margin-bottom:16px}
+.ft-col ul{display:flex;flex-direction:column;gap:8px}
+.ft-col a{font-size:12.5px;transition:.2s}
+.ft-col a:hover{color:var(--accent)}
+.ft-bot{max-width:1320px;margin:0 auto;padding:20px 0;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.ft-bot p{font-size:12px}
+.pay-icons{display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.pi{background:rgba(255,255,255,.1);border-radius:3px;padding:4px 8px;font-size:10px;font-weight:700;color:#fff;letter-spacing:.4px}
+.pi.pix{background:var(--pix)}.pi.bol{background:var(--gold);color:#333}
+
+@media(max-width:1024px){.product-layout{gap:32px}.related-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:768px){
+  nav{display:none}.burger{display:flex}
+  .product-layout{grid-template-columns:1fr;gap:24px}
+  .gallery-main{aspect-ratio:4/4}
+  .related-grid{grid-template-columns:repeat(2,1fr)}
+  .ft-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:480px){.add-section{flex-direction:column;align-items:stretch}.related-grid{grid-template-columns:repeat(2,1fr);gap:10px}.ft-grid{grid-template-columns:1fr}.tabs{overflow-x:auto}.tab{white-space:nowrap}}
+</style>
+</head>
+<body>
+
+<div class="ann">🚚 Frete grátis acima de <b>R$ 299</b> &nbsp;·&nbsp; 12x sem juros &nbsp;·&nbsp; <b>5% OFF no Pix</b></div>
+
+<header>
+  <div class="hdr">
+    <a href="index.html" class="logo">VIVA<span>.</span>MODA</a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="shop.html">Loja</a></li>
+        <li><a href="shop.html">Feminino</a></li>
+        <li><a href="shop.html">Masculino</a></li>
+        <li><a href="shop.html">Promoções</a></li>
+        <li><a href="#">Contato</a></li>
+      </ul>
+    </nav>
+    <div class="hdr-right">
+      <button class="hdr-icon"><i class="fas fa-search"></i></button>
+      <button class="hdr-icon"><i class="fas fa-heart"></i></button>
+      <button class="hdr-icon" style="position:relative"><i class="fas fa-shopping-bag"></i><span class="badge">3</span></button>
+      <button class="hdr-icon"><i class="fas fa-user"></i></button>
+      <button class="burger"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<div class="breadcrumb">
+  <div class="bc-inner">
+    <a href="index.html">Início</a>
+    <i class="fas fa-chevron-right" style="font-size:10px"></i>
+    <a href="shop.html">Loja</a>
+    <i class="fas fa-chevron-right" style="font-size:10px"></i>
+    <a href="shop.html">Feminino</a>
+    <i class="fas fa-chevron-right" style="font-size:10px"></i>
+    <span>Vestido Floral Verão</span>
+  </div>
+</div>
+
+<!-- PRODUCT -->
+<div class="product-section">
+  <div class="product-layout">
+
+    <!-- GALLERY -->
+    <div class="gallery">
+      <div class="gallery-main">
+        <span class="gm-badge">-30% OFF</span>
+        <img id="mainImg" src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&q=85" alt="Vestido Floral">
+      </div>
+      <div class="gallery-thumbs">
+        <div class="thumb active" onclick="changeImg(this,'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&q=85')">
+          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=200&q=80" alt="">
+        </div>
+        <div class="thumb" onclick="changeImg(this,'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=800&q=85')">
+          <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=200&q=80" alt="">
+        </div>
+        <div class="thumb" onclick="changeImg(this,'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=800&q=85')">
+          <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=200&q=80" alt="">
+        </div>
+        <div class="thumb" onclick="changeImg(this,'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=800&q=85')">
+          <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=200&q=80" alt="">
+        </div>
+      </div>
+    </div>
+
+    <!-- INFO -->
+    <div class="pinfo">
+      <p class="pinfo-brand">VivaStyle Collection</p>
+      <h1 class="pinfo-title">Vestido Floral Verão Premium</h1>
+
+      <div class="pinfo-rating">
+        <span class="stars-lg">★★★★★</span>
+        <span class="rating-count"><a href="#reviews">87 avaliações</a> &nbsp;|&nbsp; 312 vendidos</span>
+        <span class="in-stock">Em Estoque</span>
+      </div>
+
+      <!-- PRICING -->
+      <div class="pricing">
+        <div class="price-main">
+          <span class="price-now">R$ 129,90</span>
+          <span class="price-old">R$ 185,90</span>
+          <span class="price-off">ECONOMIZE R$ 56,00</span>
+        </div>
+        <div class="pay-options">
+          <div class="pay-row">
+            <span class="pay-badge"><i class="fas fa-bolt"></i> PIX</span>
+            <strong>R$ 123,40</strong>
+            <span style="color:var(--green);font-size:12px;font-weight:600">5% de desconto à vista</span>
+          </div>
+          <div class="pay-row">
+            <span class="pay-badge bol">BOLETO</span>
+            <strong>R$ 123,40</strong>
+            <span style="color:var(--muted);font-size:12px">5% de desconto</span>
+          </div>
+          <div class="pay-row">
+            <span class="pay-badge card"><i class="fas fa-credit-card"></i> CARTÃO</span>
+            <strong>12x de R$ 10,83</strong>
+            <span style="color:var(--muted);font-size:12px">sem juros</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- COLOR -->
+      <div class="variant-section">
+        <p class="variant-label">Cor: <span id="colorName">Azul Floral</span></p>
+        <div class="color-swatches">
+          <div class="swatch active" style="background:#4a7cb6" title="Azul Floral" onclick="setColor(this,'Azul Floral')"></div>
+          <div class="swatch" style="background:#e63946" title="Rosa Coral" onclick="setColor(this,'Rosa Coral')"></div>
+          <div class="swatch" style="background:#2d6a4f" title="Verde Selva" onclick="setColor(this,'Verde Selva')"></div>
+          <div class="swatch" style="background:#f4c542" title="Amarelo Sol" onclick="setColor(this,'Amarelo Sol')"></div>
+          <div class="swatch" style="background:#fff;border:2px solid #ddd" title="Branco Puro" onclick="setColor(this,'Branco Puro')"></div>
+          <div class="swatch" style="background:#1a1a2e" title="Azul Marinho" onclick="setColor(this,'Azul Marinho')"></div>
+        </div>
+      </div>
+
+      <!-- SIZE -->
+      <div class="variant-section">
+        <p class="variant-label">Tamanho: <span id="sizeName">M</span></p>
+        <div class="size-btns">
+          <div class="sz out" title="Esgotado">PP</div>
+          <div class="sz" onclick="setSize(this,'P')">P</div>
+          <div class="sz active" onclick="setSize(this,'M')">M</div>
+          <div class="sz" onclick="setSize(this,'G')">G</div>
+          <div class="sz" onclick="setSize(this,'GG')">GG</div>
+          <div class="sz" onclick="setSize(this,'XGG')">XGG</div>
+        </div>
+        <p class="size-guide"><i class="fas fa-ruler-horizontal"></i> Guia de Tamanhos</p>
+      </div>
+
+      <!-- QTY + ADD TO CART -->
+      <div class="add-section">
+        <div class="qty-ctrl">
+          <button class="qty-btn" onclick="changeQty(-1)">−</button>
+          <input type="number" class="qty-inp" id="qty" value="1" min="1" max="10">
+          <button class="qty-btn" onclick="changeQty(1)">+</button>
+        </div>
+        <button class="btn-cart" onclick="addToCart()">
+          <i class="fas fa-shopping-cart"></i> Adicionar ao Carrinho
+        </button>
+      </div>
+
+      <button class="btn-buy">
+        <i class="fas fa-bolt"></i> Comprar Agora
+      </button>
+
+      <div class="secondary-actions">
+        <button class="sa-btn"><i class="fas fa-heart"></i> Favoritar</button>
+        <button class="sa-btn"><i class="fas fa-shuffle"></i> Comparar</button>
+        <button class="sa-btn"><i class="fas fa-share-nodes"></i> Compartilhar</button>
+      </div>
+
+      <!-- DELIVERY -->
+      <div class="delivery-box">
+        <h4><i class="fas fa-truck" style="color:var(--accent)"></i> Calcular Frete e Entrega</h4>
+        <div class="delivery-form">
+          <input type="text" placeholder="Digite seu CEP" maxlength="9" id="cepInput">
+          <button onclick="calcFrete()">Calcular</button>
+        </div>
+        <div class="delivery-result" id="freteResult" style="display:none">
+          <div class="dr-row">
+            <span class="carrier"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Correios_logo.svg/120px-Correios_logo.svg.png" style="height:18px;width:auto" alt="Correios"> PAC</span>
+            <span class="days">5–8 dias úteis</span>
+            <span class="price">R$ 14,90</span>
+          </div>
+          <div class="dr-row">
+            <span class="carrier"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Correios_logo.svg/120px-Correios_logo.svg.png" style="height:18px;width:auto" alt="Correios"> SEDEX</span>
+            <span class="days">2–3 dias úteis</span>
+            <span class="price">R$ 28,50</span>
+          </div>
+          <div class="dr-row">
+            <span class="carrier"><i class="fas fa-check-circle" style="color:var(--green)"></i> Frete Grátis</span>
+            <span class="days">7–12 dias úteis</span>
+            <span class="price" style="color:var(--green)">GRÁTIS</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- META -->
+      <div class="prod-meta">
+        <span><b>SKU:</b> VFS-AZL-M-2025</span>
+        <span><b>Categorias:</b> <a href="shop.html" style="color:var(--accent)">Feminino</a>, <a href="shop.html" style="color:var(--accent)">Vestidos</a></span>
+        <span><b>Tags:</b> vestido, floral, verão, feminino, casual</span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- TABS -->
+  <div class="tabs-section">
+    <div class="tabs">
+      <div class="tab active" onclick="openTab(this,'desc')">Descrição</div>
+      <div class="tab" onclick="openTab(this,'specs')">Informações</div>
+      <div class="tab" onclick="openTab(this,'reviews')">Avaliações (87)</div>
+      <div class="tab" onclick="openTab(this,'ship')">Envio & Trocas</div>
+    </div>
+
+    <div class="tab-content active" id="desc">
+      <p>O <strong>Vestido Floral Verão Premium</strong> é a peça perfeita para os dias quentes do verão brasileiro. Com seu estampado floral exclusivo e tecido leve de alta qualidade, este vestido oferece conforto e elegância para qualquer ocasião — do dia a dia ao passeio no fim de semana.</p>
+      <p>Desenvolvido com <strong>100% viscose</strong> de primeira linha, o tecido é macio, respirável e cai perfeitamente no corpo. A modelagem soltinha no corpo garante total liberdade de movimento, ideal para o clima tropical do Brasil.</p>
+      <p><strong>Destaques do produto:</strong></p>
+      <ul>
+        <li>Tecido 100% viscose premium — leve e respirável</li>
+        <li>Estampa floral exclusiva da coleção Verão 2025</li>
+        <li>Modelagem midi (comprimento até o joelho)</li>
+        <li>Decote V com detalhe franzido</li>
+        <li>Alças largas ajustáveis</li>
+        <li>Lavável à máquina (água fria)</li>
+        <li>Certificação OEKO-TEX® — livre de substâncias nocivas</li>
+      </ul>
+    </div>
+
+    <div class="tab-content" id="specs">
+      <table class="specs-table">
+        <tr><td>Material</td><td>100% Viscose</td></tr>
+        <tr><td>Modelagem</td><td>Midi — comprimento até o joelho</td></tr>
+        <tr><td>Decote</td><td>Decote V franzido</td></tr>
+        <tr><td>Manga</td><td>Alças largas ajustáveis</td></tr>
+        <tr><td>Fechamento</td><td>Sem fechamento (slip-on)</td></tr>
+        <tr><td>Cuidados</td><td>Lavar à máquina, água fria, não torcer</td></tr>
+        <tr><td>Cores disponíveis</td><td>Azul Floral, Rosa Coral, Verde Selva, Amarelo Sol, Branco Puro, Azul Marinho</td></tr>
+        <tr><td>Tamanhos</td><td>P, M, G, GG, XGG</td></tr>
+        <tr><td>Origem</td><td>Produzido no Brasil</td></tr>
+        <tr><td>Certificação</td><td>OEKO-TEX® Standard 100</td></tr>
+        <tr><td>SKU</td><td>VFS-AZL-M-2025</td></tr>
+      </table>
+    </div>
+
+    <div class="tab-content" id="reviews">
+      <div class="review-summary">
+        <div class="rev-score">
+          <div class="rev-big">4,9</div>
+          <div class="rev-stars">★★★★★</div>
+          <div class="rev-count">87 avaliações</div>
+        </div>
+        <div class="rev-bars">
+          <div class="rb-row"><span class="rb-label">5★</span><div class="rb-bar"><div class="rb-fill" style="width:82%"></div></div><span class="rb-count">71</span></div>
+          <div class="rb-row"><span class="rb-label">4★</span><div class="rb-bar"><div class="rb-fill" style="width:12%"></div></div><span class="rb-count">10</span></div>
+          <div class="rb-row"><span class="rb-label">3★</span><div class="rb-bar"><div class="rb-fill" style="width:5%"></div></div><span class="rb-count">4</span></div>
+          <div class="rb-row"><span class="rb-label">2★</span><div class="rb-bar"><div class="rb-fill" style="width:2%"></div></div><span class="rb-count">2</span></div>
+          <div class="rb-row"><span class="rb-label">1★</span><div class="rb-bar"><div class="rb-fill" style="width:0%"></div></div><span class="rb-count">0</span></div>
+        </div>
+      </div>
+      <div class="review-list">
+        <div class="rv">
+          <div class="rv-head">
+            <div class="rv-avatar"><img src="https://i.pravatar.cc/44?img=47" alt="Ana"></div>
+            <div class="rv-meta"><strong>Ana Beatriz S.</strong><span>São Paulo, SP · 15 abr 2025</span></div>
+            <span class="rv-stars">★★★★★</span>
+            <span class="rv-verified">Compra Verificada</span>
+          </div>
+          <p class="rv-text">Amei demais o vestido! O tecido é super leve e macio, perfeito para o calor de São Paulo. A estampa floral é linda, igual às fotos. Comprei tamanho M e ficou perfeito (tenho 1,64m e 62kg). Entrega em 3 dias! Com certeza compro mais.</p>
+        </div>
+        <div class="rv">
+          <div class="rv-head">
+            <div class="rv-avatar"><img src="https://i.pravatar.cc/44?img=32" alt="Carla"></div>
+            <div class="rv-meta"><strong>Carla Mendes</strong><span>Rio de Janeiro, RJ · 8 abr 2025</span></div>
+            <span class="rv-stars">★★★★★</span>
+            <span class="rv-verified">Compra Verificada</span>
+          </div>
+          <p class="rv-text">Excelente qualidade pelo preço! Paguei no Pix com desconto, chegou em 4 dias. O vestido é ainda mais bonito pessoalmente. Já virei fã da loja. Atendimento via WhatsApp foi ótimo também — responderam super rápido.</p>
+        </div>
+        <div class="rv">
+          <div class="rv-head">
+            <div class="rv-avatar"><img src="https://i.pravatar.cc/44?img=25" alt="Mariana"></div>
+            <div class="rv-meta"><strong>Mariana Costa</strong><span>Curitiba, PR · 2 abr 2025</span></div>
+            <span class="rv-stars">★★★★☆</span>
+            <span class="rv-verified">Compra Verificada</span>
+          </div>
+          <p class="rv-text">Muito bonito e confortável. O único ponto é que o azul é um tom mais claro do que aparece na tela, mas ficou muito lindo assim mesmo. O caimento é perfeito e o tecido não amassa. Recomendo!</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="ship">
+      <p><strong>Opções de Envio:</strong></p>
+      <ul>
+        <li><strong>Correios PAC:</strong> 5 a 8 dias úteis — a partir de R$ 14,90</li>
+        <li><strong>Correios SEDEX:</strong> 2 a 3 dias úteis — a partir de R$ 28,50</li>
+        <li><strong>Transportadora Jadlog:</strong> 3 a 6 dias úteis — a partir de R$ 18,90</li>
+        <li><strong>Frete Grátis:</strong> para pedidos acima de R$ 299,00 (PAC)</li>
+      </ul>
+      <p style="margin-top:16px"><strong>Política de Trocas e Devoluções:</strong></p>
+      <ul>
+        <li>Prazo de 30 dias para solicitar troca ou devolução</li>
+        <li>O produto deve estar sem uso, com etiqueta e na embalagem original</li>
+        <li>Trocas de tamanho são gratuitas (até 1 troca por pedido)</li>
+        <li>Reembolso integral em caso de defeito ou erro no envio</li>
+        <li>Solicite pelo painel da sua conta ou pelo WhatsApp</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- RELATED PRODUCTS -->
+<div class="related-section">
+  <div class="sec-head">
+    <p class="sec-tag">Você Também Vai Amar</p>
+    <h2 class="sec-title">Produtos Relacionados</h2>
+  </div>
+  <div class="related-grid">
+    <div class="pc">
+      <div class="pc-img">
+        <div class="badge-wrap"><span class="tag tag-new">Novo</span></div>
+        <img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c?w=500&q=80" alt="" loading="lazy">
+        <div class="pc-acts"><button class="pa"><i class="fas fa-heart"></i></button><button class="pa"><i class="fas fa-eye"></i></button></div>
+        <button class="pc-cart"><i class="fas fa-shopping-cart"></i> Adicionar</button>
+      </div>
+      <div class="pc-info">
+        <p class="pc-cat">Feminino</p>
+        <h3 class="pc-name"><a href="product.html">Vestido Longo Elegante</a></h3>
+        <div style="display:flex;align-items:center;gap:5px;margin-bottom:6px"><span class="stars">★★★★★</span><span style="font-size:11px;color:var(--muted)">(71)</span></div>
+        <div class="pc-price"><span class="p-now">R$ 349,90</span></div>
+      </div>
+    </div>
+    <div class="pc">
+      <div class="pc-img">
+        <div class="badge-wrap"><span class="tag tag-sale">-30%</span></div>
+        <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=500&q=80" alt="" loading="lazy">
+        <div class="pc-acts"><button class="pa"><i class="fas fa-heart"></i></button><button class="pa"><i class="fas fa-eye"></i></button></div>
+        <button class="pc-cart"><i class="fas fa-shopping-cart"></i> Adicionar</button>
+      </div>
+      <div class="pc-info">
+        <p class="pc-cat">Feminino</p>
+        <h3 class="pc-name"><a href="product.html">Blazer Executivo Feminino</a></h3>
+        <div style="display:flex;align-items:center;gap:5px;margin-bottom:6px"><span class="stars">★★★★★</span><span style="font-size:11px;color:var(--muted)">(61)</span></div>
+        <div class="pc-price"><span class="p-now">R$ 319,90</span><span class="p-old">R$ 455,90</span></div>
+      </div>
+    </div>
+    <div class="pc">
+      <div class="pc-img">
+        <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=500&q=80" alt="" loading="lazy">
+        <div class="pc-acts"><button class="pa"><i class="fas fa-heart"></i></button><button class="pa"><i class="fas fa-eye"></i></button></div>
+        <button class="pc-cart"><i class="fas fa-shopping-cart"></i> Adicionar</button>
+      </div>
+      <div class="pc-info">
+        <p class="pc-cat">Feminino</p>
+        <h3 class="pc-name"><a href="product.html">Look Completo Casual</a></h3>
+        <div style="display:flex;align-items:center;gap:5px;margin-bottom:6px"><span class="stars">★★★★★</span><span style="font-size:11px;color:var(--muted)">(113)</span></div>
+        <div class="pc-price"><span class="p-now">R$ 274,90</span><span class="p-old">R$ 369,90</span></div>
+      </div>
+    </div>
+    <div class="pc">
+      <div class="pc-img">
+        <div class="badge-wrap"><span class="tag tag-new">Novo</span></div>
+        <img src="https://images.unsplash.com/photo-1467043237213-65f2da53396f?w=500&q=80" alt="" loading="lazy">
+        <div class="pc-acts"><button class="pa"><i class="fas fa-heart"></i></button><button class="pa"><i class="fas fa-eye"></i></button></div>
+        <button class="pc-cart"><i class="fas fa-shopping-cart"></i> Adicionar</button>
+      </div>
+      <div class="pc-info">
+        <p class="pc-cat">Feminino</p>
+        <h3 class="pc-name"><a href="product.html">Calça Jeans Skinny</a></h3>
+        <div style="display:flex;align-items:center;gap:5px;margin-bottom:6px"><span class="stars">★★★★★</span><span style="font-size:11px;color:var(--muted)">(94)</span></div>
+        <div class="pc-price"><span class="p-now">R$ 159,90</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-grid">
+    <div class="ft-brand">
+      <div class="logo">VIVA<span style="color:var(--accent)">.</span>MODA</div>
+      <p>Sua loja de moda online com as melhores tendências, entrega rápida e pagamento seguro em todo o Brasil.</p>
+      <div class="ft-social">
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-tiktok"></i></a>
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+    <div class="ft-col"><h4>Atendimento</h4><ul><li><a href="#">Central de Ajuda</a></li><li><a href="#">Rastrear Pedido</a></li><li><a href="#">Trocas e Devoluções</a></li><li><a href="#">WhatsApp</a></li></ul></div>
+    <div class="ft-col"><h4>Institucional</h4><ul><li><a href="#">Sobre Nós</a></li><li><a href="#">Blog de Moda</a></li><li><a href="#">Privacidade</a></li><li><a href="#">Termos</a></li></ul></div>
+    <div class="ft-col"><h4>Minha Conta</h4><ul><li><a href="#">Minha Conta</a></li><li><a href="#">Meus Pedidos</a></li><li><a href="#">Lista de Desejos</a></li><li><a href="#">Cupons</a></li></ul></div>
+  </div>
+  <div class="ft-bot">
+    <p>© 2025 VIVA.MODA — Todos os direitos reservados.</p>
+    <div class="pay-icons">
+      <span class="pi pix">PIX</span><span class="pi bol">BOLETO</span>
+      <span class="pi">VISA</span><span class="pi">MASTER</span>
+      <span class="pi">ELO</span><span class="pi">AMEX</span>
+    </div>
+  </div>
+</footer>
+
+<a href="#" class="wa"><i class="fab fa-whatsapp"></i></a>
+
+<script>
+function changeImg(el,src){
+  document.getElementById('mainImg').src=src;
+  document.querySelectorAll('.thumb').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+}
+function setColor(el,name){
+  document.querySelectorAll('.color-swatches .swatch').forEach(s=>s.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('colorName').textContent=name;
+}
+function setSize(el,name){
+  document.querySelectorAll('.sz:not(.out)').forEach(s=>s.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('sizeName').textContent=name;
+}
+function changeQty(d){
+  const inp=document.getElementById('qty');
+  let v=parseInt(inp.value)+d;
+  if(v<1)v=1;if(v>10)v=10;
+  inp.value=v;
+}
+function calcFrete(){
+  const cep=document.getElementById('cepInput').value.replace(/\D/g,'');
+  if(cep.length>=8){
+    document.getElementById('freteResult').style.display='flex';
+    document.getElementById('freteResult').style.flexDirection='column';
+  }
+}
+function addToCart(){
+  const btn=document.querySelector('.btn-cart');
+  btn.innerHTML='<i class="fas fa-check"></i> Adicionado!';
+  btn.style.background='var(--green)';
+  setTimeout(()=>{
+    btn.innerHTML='<i class="fas fa-shopping-cart"></i> Adicionar ao Carrinho';
+    btn.style.background='';
+  },2000);
+}
+function openTab(el,id){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById(id).classList.add('active');
+}
+// CEP mask
+document.getElementById('cepInput').addEventListener('input',function(){
+  let v=this.value.replace(/\D/g,'');
+  if(v.length>5)v=v.slice(0,5)+'-'+v.slice(5,8);
+  this.value=v;
+});
+</script>
+</body>
+</html>
