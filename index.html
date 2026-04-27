@@ -92,18 +92,40 @@ section{padding:76px 24px}
 
 /* ── CATEGORIES ── */
 .cats{background:var(--bg)}
-.cat-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto auto;gap:14px}
-.cat-card{position:relative;overflow:hidden;border-radius:10px;cursor:pointer}
+.cats-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:48px}
+.cats-top .sec-head{text-align:left;margin-bottom:0}
+.cats-view-all{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:600;color:var(--primary);border:2px solid var(--primary);padding:11px 22px;border-radius:6px;transition:.25s;white-space:nowrap}
+.cats-view-all:hover{background:var(--primary);color:#fff}
+.cat-grid{display:grid;grid-template-columns:1.25fr 1fr 1fr;grid-template-rows:300px 250px;gap:14px}
+.cat-card{position:relative;overflow:hidden;border-radius:14px;cursor:pointer;display:block}
 .cat-card:first-child{grid-row:span 2}
-.cat-card img{width:100%;height:100%;min-height:210px;object-fit:cover;transition:.55s ease}
-.cat-card:first-child img{min-height:445px}
-.cat-card:hover img{transform:scale(1.07)}
-.cat-ov{position:absolute;inset:0;background:linear-gradient(0deg,rgba(26,26,46,.78) 0%,transparent 60%);display:flex;align-items:flex-end;padding:22px;transition:.3s}
-.cat-card:hover .cat-ov{background:linear-gradient(0deg,rgba(26,26,46,.9) 0%,transparent 50%)}
-.cat-info h3{color:#fff;font-size:19px;font-weight:700;margin-bottom:3px}
-.cat-info span{color:rgba(255,255,255,.72);font-size:12.5px}
-.cat-arr{margin-left:auto;width:38px;height:38px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--primary);font-size:13px;opacity:0;transform:translateX(8px);transition:.3s}
-.cat-card:hover .cat-arr{opacity:1;transform:translateX(0)}
+.cat-card img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease,filter .6s ease}
+.cat-card:hover img{transform:scale(1.09);filter:brightness(1.05)}
+
+/* overlay */
+.cat-ov{position:absolute;inset:0;background:linear-gradient(0deg,rgba(15,15,35,.82) 0%,rgba(15,15,35,.18) 50%,transparent 100%);transition:.4s;display:flex;flex-direction:column;justify-content:flex-end;padding:28px}
+.cat-card:hover .cat-ov{background:linear-gradient(0deg,rgba(15,15,35,.93) 0%,rgba(15,15,35,.3) 55%,transparent 100%)}
+
+/* count badge */
+.cat-count{position:absolute;top:16px;right:16px;background:rgba(255,255,255,.18);backdrop-filter:blur(8px);color:#fff;font-size:11px;font-weight:700;letter-spacing:.5px;padding:5px 12px;border-radius:20px;border:1px solid rgba(255,255,255,.25);transition:.3s}
+.cat-card:hover .cat-count{background:var(--accent);border-color:var(--accent)}
+
+/* text */
+.cat-info{transition:transform .35s ease}
+.cat-card:hover .cat-info{transform:translateY(-8px)}
+.cat-info h3{color:#fff;font-size:22px;font-weight:800;margin-bottom:4px;line-height:1.2;text-shadow:0 2px 8px rgba(0,0,0,.3)}
+.cat-card:first-child .cat-info h3{font-size:28px}
+.cat-info span{color:rgba(255,255,255,.7);font-size:13px;font-weight:500}
+
+/* underline accent on hover */
+.cat-line{width:0;height:2.5px;background:var(--accent);border-radius:2px;margin-top:8px;transition:width .4s ease}
+.cat-card:hover .cat-line{width:40px}
+
+/* CTA button slides up */
+.cat-cta{display:inline-flex;align-items:center;gap:7px;background:var(--accent);color:#fff;font-size:12.5px;font-weight:700;padding:9px 18px;border-radius:5px;margin-top:12px;opacity:0;transform:translateY(14px);transition:opacity .35s ease,transform .35s ease;letter-spacing:.3px;width:fit-content}
+.cat-card:hover .cat-cta{opacity:1;transform:translateY(0)}
+.cat-cta i{font-size:11px;transition:transform .25s}
+.cat-card:hover .cat-cta i{transform:translateX(3px)}
 
 /* ── PRODUCTS ── */
 .prod-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
@@ -196,9 +218,9 @@ footer{background:var(--primary);color:rgba(255,255,255,.75);padding:60px 24px 0
   .burger{display:flex}
   .hero{height:72vh}
   .prod-grid{grid-template-columns:repeat(2,1fr);gap:14px}
-  .cat-grid{grid-template-columns:1fr 1fr}
+  .cat-grid{grid-template-columns:1fr 1fr;grid-template-rows:auto}
   .cat-card:first-child{grid-column:span 2;grid-row:span 1}
-  .cat-card:first-child img{min-height:250px}
+  .cats-top{flex-direction:column;align-items:flex-start;gap:16px}
   .testi-grid{grid-template-columns:1fr}
   .ft-grid{grid-template-columns:1fr 1fr}
 }
@@ -278,40 +300,86 @@ footer{background:var(--primary);color:rgba(255,255,255,.75);padding:60px 24px 0
 <!-- CATEGORIES -->
 <section class="cats">
   <div class="wrap">
-    <div class="sec-head">
-      <p class="sec-tag">Explore</p>
-      <h2 class="sec-title">Compre por Categoria</h2>
-      <p class="sec-sub">Encontre tudo o que você precisa, organizado e fácil de navegar</p>
+    <div class="cats-top">
+      <div class="sec-head">
+        <p class="sec-tag">Explore</p>
+        <h2 class="sec-title">Compre por Categoria</h2>
+        <p class="sec-sub">Encontre tudo o que você precisa, organizado e fácil de navegar</p>
+      </div>
+      <a href="shop.html" class="cats-view-all">Ver Todas <i class="fas fa-arrow-right"></i></a>
     </div>
     <div class="cat-grid">
+
+      <!-- Feminino — tall left card -->
       <a href="shop.html" class="cat-card">
-        <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=700&q=80" alt="Feminino" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=800&q=85" alt="Feminino" loading="lazy">
+        <span class="cat-count">248 produtos</span>
         <div class="cat-ov">
-          <div class="cat-info"><h3>Feminino</h3><span>248 produtos</span></div>
-          <div class="cat-arr"><i class="fas fa-arrow-right"></i></div>
+          <div class="cat-info">
+            <h3>Feminino</h3>
+            <span>Moda, elegância e estilo</span>
+            <div class="cat-line"></div>
+          </div>
+          <div class="cat-cta">Explorar coleção <i class="fas fa-arrow-right"></i></div>
         </div>
       </a>
+
+      <!-- Masculino -->
       <a href="shop.html" class="cat-card">
-        <img src="https://images.unsplash.com/photo-1516257984-b1b4d707412e?w=600&q=80" alt="Masculino" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1488161628813-04466f872be2?w=700&q=85" alt="Masculino" loading="lazy">
+        <span class="cat-count">186 produtos</span>
         <div class="cat-ov">
-          <div class="cat-info"><h3>Masculino</h3><span>186 produtos</span></div>
-          <div class="cat-arr"><i class="fas fa-arrow-right"></i></div>
+          <div class="cat-info">
+            <h3>Masculino</h3>
+            <span>Do casual ao executivo</span>
+            <div class="cat-line"></div>
+          </div>
+          <div class="cat-cta">Explorar <i class="fas fa-arrow-right"></i></div>
         </div>
       </a>
+
+      <!-- Calçados -->
       <a href="shop.html" class="cat-card">
-        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80" alt="Calçados" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=700&q=85" alt="Calçados" loading="lazy">
+        <span class="cat-count">124 produtos</span>
         <div class="cat-ov">
-          <div class="cat-info"><h3>Calçados</h3><span>124 produtos</span></div>
-          <div class="cat-arr"><i class="fas fa-arrow-right"></i></div>
+          <div class="cat-info">
+            <h3>Calçados</h3>
+            <span>Tênis, sapatos e mais</span>
+            <div class="cat-line"></div>
+          </div>
+          <div class="cat-cta">Explorar <i class="fas fa-arrow-right"></i></div>
         </div>
       </a>
+
+      <!-- Acessórios -->
       <a href="shop.html" class="cat-card">
-        <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&q=80" alt="Acessórios" loading="lazy">
+        <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=700&q=85" alt="Acessórios" loading="lazy">
+        <span class="cat-count">93 produtos</span>
         <div class="cat-ov">
-          <div class="cat-info"><h3>Acessórios</h3><span>93 produtos</span></div>
-          <div class="cat-arr"><i class="fas fa-arrow-right"></i></div>
+          <div class="cat-info">
+            <h3>Acessórios</h3>
+            <span>Bolsas, cintos e joias</span>
+            <div class="cat-line"></div>
+          </div>
+          <div class="cat-cta">Explorar <i class="fas fa-arrow-right"></i></div>
         </div>
       </a>
+
+      <!-- Promoções -->
+      <a href="shop.html" class="cat-card">
+        <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=700&q=85" alt="Promoções" loading="lazy">
+        <span class="cat-count" style="background:var(--accent);border-color:var(--accent)">Até 70% OFF</span>
+        <div class="cat-ov">
+          <div class="cat-info">
+            <h3>Promoções</h3>
+            <span>Descontos imperdíveis</span>
+            <div class="cat-line"></div>
+          </div>
+          <div class="cat-cta">Ver ofertas <i class="fas fa-arrow-right"></i></div>
+        </div>
+      </a>
+
     </div>
   </div>
 </section>
